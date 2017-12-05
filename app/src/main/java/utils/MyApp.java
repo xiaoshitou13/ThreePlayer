@@ -1,10 +1,9 @@
-package byc.by.com.threeplayer.app;
+package utils;
 
 import android.app.Application;
 
-
 /**
- * Created by Zhang on 2017/12/5.
+ * Created by ASUS on 2017/11/9.
  */
 
 public class MyApp extends Application {
@@ -13,6 +12,4 @@ public class MyApp extends Application {
         super.onCreate();
 
     }
-
-
 }
