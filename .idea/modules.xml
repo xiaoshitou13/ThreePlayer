@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+
       <module fileurl="file://$PROJECT_DIR$/ThreePlayer.iml" filepath="$PROJECT_DIR$/ThreePlayer.iml" />
       <module fileurl="file://E:\ThreePlayer\ThreePlayer.iml" filepath="E:\ThreePlayer\ThreePlayer.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://E:\ThreePlayer\app\app.iml" filepath="E:\ThreePlayer\app\app.iml" />
+
     </modules>
   </component>
 </project>

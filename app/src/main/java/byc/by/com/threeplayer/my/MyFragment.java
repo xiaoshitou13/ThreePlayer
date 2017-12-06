@@ -19,6 +19,7 @@ public class MyFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.my,container,false);
 
+
         return v;
     }
 }
