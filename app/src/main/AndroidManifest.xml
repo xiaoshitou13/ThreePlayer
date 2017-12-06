@@ -25,9 +25,13 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".find.view.Ijkitplayer"/>
+
+
         <activity android:name=".cehua.Fuli_Activity"></activity>
 
         <activity android:name=".topic.LieBiaoActivity"></activity>
+
 
     </application>
 
