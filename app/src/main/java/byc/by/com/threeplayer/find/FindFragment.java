@@ -24,7 +24,10 @@ import byc.by.com.threeplayer.find.cardswipelayout.CardItemTouchHelperCallback;
 import byc.by.com.threeplayer.find.cardswipelayout.CardLayoutManager;
 import byc.by.com.threeplayer.find.cardswipelayout.OnSwipeListener;
 import byc.by.com.threeplayer.find.presenter.Presenter;
+
 import byc.by.com.threeplayer.find.view.Ijkitplayer;
+
+
 import byc.by.com.threeplayer.find.view.Iview;
 
 
@@ -125,8 +128,13 @@ public class FindFragment extends BaseFragment implements Iview {
 
     @OnClick(R.id.huanyipi)
     public void onClick() {
+
         /*page++;
         presenter.getdata(page+"");*/
         startActivity(new Intent(getActivity(), Ijkitplayer.class));
+
+        page++;
+        presenter.getdata(page+"");
+
     }
 }
