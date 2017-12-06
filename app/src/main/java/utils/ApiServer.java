@@ -2,13 +2,9 @@ package utils;
 
 
 import byc.by.com.threeplayer.choice.bean.ChoiceBean;
-
-import byc.by.com.threeplayer.topic.Topic_Bean;
-import retrofit2.http.GET;
-import rx.Observable;
-
-
 import byc.by.com.threeplayer.find.FindBean;
+import byc.by.com.threeplayer.find.bean.Video;
+import byc.by.com.threeplayer.topic.Topic_Bean;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 import rx.Observable;
@@ -32,4 +28,6 @@ public interface ApiServer {
 
     @GET
     Observable<FindBean> Fuli(@Url String s);
+    @GET
+    Observable<Video> video();
 }
