@@ -54,7 +54,8 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'me.yokeyword:fragmentation:1.1.9'
 
-
+    //cardview
+    compile 'com.android.support:cardview-v7:22.2.1'
 
 
 }
