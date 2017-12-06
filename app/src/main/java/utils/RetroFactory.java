@@ -29,5 +29,21 @@ public class RetroFactory {
              .create(ApiServer.class);
         return retrofitService;
 }
+    public static ApiServer  Topic() {
+
+
+        OkHttpClient httpClient = new OkHttpClient.Builder()
+                .addInterceptor(new LoggingInterceptor()).connectTimeout(30, TimeUnit.SECONDS)
+                .readTimeout(30, TimeUnit.SECONDS)
+                .build();
+        ApiServer retrofitService = new Retrofit.Builder()
+                .baseUrl(Api.JINGXUAN)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .client(httpClient)
+                .build()
+                .create(ApiServer.class);
+        return retrofitService;
+    }
 
 }
