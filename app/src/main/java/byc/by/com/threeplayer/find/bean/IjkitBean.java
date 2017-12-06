@@ -5,7 +5,7 @@ package byc.by.com.threeplayer.find.bean;
  */
 
 public class IjkitBean {
-    private String path;
+   private String path;
 
     public IjkitBean(String path) {
         this.path = path;

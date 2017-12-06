@@ -23,7 +23,19 @@ import byc.by.com.threeplayer.find.FindBean;
 public class MyAdapters extends RecyclerView.Adapter {
     private Context mContext;
     private List<FindBean.RetBean.ListBean> list;
+    private ItemOnclicklistener itemOnclicklistener;
 
+    public void setItemOnclicklistener(ItemOnclicklistener itemOnclicklistener) {
+        this.itemOnclicklistener = itemOnclicklistener;
+    }
+
+    public ItemOnclicklistener getItemOnclicklistener() {
+        return itemOnclicklistener;
+    }
+
+    public interface ItemOnclicklistener{
+        void item(View view,int postion);
+    }
     public MyAdapters(Context mContext, List<FindBean.RetBean.ListBean> list) {
         this.mContext = mContext;
         this.list = list;
@@ -36,7 +48,7 @@ public class MyAdapters extends RecyclerView.Adapter {
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         MyHolder myHolder = (MyHolder) holder;
         myHolder.description.setText(list.get(position).getDescription());
         myHolder.mTextView.setText(list.get(position).getTitle());
@@ -45,6 +57,12 @@ public class MyAdapters extends RecyclerView.Adapter {
                 .placeholder(R.mipmap.ic_launcher)
                 .crossFade()
                 .into(myHolder.img);
+        myHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                itemOnclicklistener.item(view,position);
+            }
+        });
     }
 
     @Override

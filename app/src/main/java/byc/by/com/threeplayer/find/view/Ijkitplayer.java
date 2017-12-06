@@ -7,20 +7,27 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.MotionEvent;
+
+import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import byc.by.com.threeplayer.R;
+import byc.by.com.threeplayer.find.MyOkhttp;
 import byc.by.com.threeplayer.find.bean.IjkitBean;
+import byc.by.com.threeplayer.find.bean.Video;
 import byc.by.com.threeplayer.find.common.PlayerManager;
+import okhttp3.Request;
 
 
 public class Ijkitplayer extends FragmentActivity implements PlayerManager.PlayerStateListener {
@@ -30,11 +37,10 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
     @BindView(R.id.tablayout)
     TabLayout tablayout;
     private PlayerManager player;
-    private String path;
-    private String path1;
     private List<String> tb_list;
     private List<Fragment> flist;
-
+    private String paths;
+    private String smoothURLs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,7 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
         EventBus.getDefault().register(this);
         ButterKnife.bind(this);
         addtab();
+
         //初始化播放器
         player = new PlayerManager(this);
         //player.setFullScreenOnly(true);
@@ -50,6 +57,22 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
         //player.playInFullScreen(true);
         player.setPlayerStateListener(this);
 
+    }
+
+    private void start(String path) {
+        MyOkhttp.getAsync(paths, new MyOkhttp.DataCallBack() {
+            @Override
+            public void requestFailure(Request request, IOException e) {
+            }
+            @Override
+            public void requestSuccess(String result) throws Exception {
+                Gson gson = new Gson();
+                Video video = gson.fromJson(result, Video.class);
+                smoothURLs = video.getRet().getSmoothURL();
+                player.play(smoothURLs);
+
+            }
+        });
     }
 
     private void addtab() {
@@ -108,11 +131,11 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void getpath(IjkitBean path) {
-        path1 = path.getPath();
-        player.play("http://video.jiecao.fm/5/1/%E8%87%AA%E5%8F%96%E5%85%B6%E8%BE%B1.mp4"
+    public void getpath(IjkitBean video) {
+        paths = video.getPath();
+        Log.i("p",""+paths);
+        start(paths);
 
-);
     }
     //ViewPager适配器，放入Fragment
     private class Myviewpager extends FragmentPagerAdapter {
