@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
@@ -23,7 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".topic.LieBiaoActivity"></activity>
+        <activity android:name=".topic.LieBiaoActivity" />
+        <activity android:name=".my.MySettings" />
+        <activity android:name=".my.MywebViewClass"></activity>
     </application>
 
 </manifest>
