@@ -18,12 +18,13 @@ import butterknife.Unbinder;
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseFragment;
 import byc.by.com.threeplayer.find.adapter.MyAdapters;
+import byc.by.com.threeplayer.find.cardswipelayout.CardConfig;
+import byc.by.com.threeplayer.find.cardswipelayout.CardItemTouchHelperCallback;
+import byc.by.com.threeplayer.find.cardswipelayout.CardLayoutManager;
+import byc.by.com.threeplayer.find.cardswipelayout.OnSwipeListener;
 import byc.by.com.threeplayer.find.presenter.Presenter;
 import byc.by.com.threeplayer.find.view.Iview;
-import find.cardswipelayout.CardConfig;
-import find.cardswipelayout.CardItemTouchHelperCallback;
-import find.cardswipelayout.CardLayoutManager;
-import find.cardswipelayout.OnSwipeListener;
+
 
 /**
  * Created by Zhang on 2017/12/5.
