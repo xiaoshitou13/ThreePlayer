@@ -9,6 +9,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
@@ -25,12 +28,18 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".topic.LieBiaoActivity" />
+        <activity android:name=".my.MySettings" />
+        <activity android:name=".my.MywebViewClass"></activity>
+
+
         <activity android:name=".find.view.Ijkitplayer"/>
 
 
         <activity android:name=".cehua.Fuli_Activity"></activity>
 
         <activity android:name=".topic.LieBiaoActivity"></activity>
+
 
 
     </application>

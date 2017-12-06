@@ -22,6 +22,8 @@ public class BaseActivity extends SupportActivity {
 
     private void init() {
         setTranslucentStatus(true);
+
+
     }
     /**
      * 设置沉浸式
