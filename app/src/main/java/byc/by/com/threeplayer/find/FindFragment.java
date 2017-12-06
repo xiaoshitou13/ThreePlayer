@@ -34,9 +34,5 @@ public class FindFragment extends BaseFragment {
         return v;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
+ 
 }
