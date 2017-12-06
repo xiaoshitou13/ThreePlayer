@@ -10,10 +10,11 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import byc.by.com.threeplayer.R;
-import byc.by.com.threeplayer.find.bean.FindBean;
+import byc.by.com.threeplayer.find.FindBean;
+
 
 /**
  * date：2017/11/20
@@ -21,9 +22,9 @@ import byc.by.com.threeplayer.find.bean.FindBean;
  */
 public class MyAdapters extends RecyclerView.Adapter {
     private Context mContext;
-    private ArrayList<FindBean> list;
+    private List<FindBean.RetBean.ListBean> list;
 
-    public MyAdapters(Context mContext, ArrayList<FindBean> list) {
+    public MyAdapters(Context mContext, List<FindBean.RetBean.ListBean> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -37,10 +38,10 @@ public class MyAdapters extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         MyHolder myHolder = (MyHolder) holder;
-        myHolder.description.setText(list.get(position).getRet().getList().get(position).getDescription());
-        myHolder.mTextView.setText(list.get(position).getRet().getList().get(position).getTitle());
+        myHolder.description.setText(list.get(position).getDescription());
+        myHolder.mTextView.setText(list.get(position).getTitle());
         Glide.with(mContext)
-                .load(list.get(position).getRet().getList().get(position).getPic())
+                .load(list.get(position).getPic())
                 .placeholder(R.mipmap.ic_launcher)
                 .crossFade()
                 .into(myHolder.img);
