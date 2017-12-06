@@ -16,6 +16,18 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        //jni
+        sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }
+    }
+    repositories {
+        mavenCentral()
+        flatDir {
+            dirs 'libs' //this way we can find the .aar file in libs folder
+        }
     }
 }
 
@@ -53,7 +65,8 @@ dependencies {
     compile 'com.xhb:xbanner:1.3.0'
     compile 'com.nineoldandroids:library:2.4.0'
     compile 'me.yokeyword:fragmentation:1.1.9'
+    compile(name: 'ijkplayer-java-release', ext: 'aar')
 
-
-
+    //tablayout
+    compile 'com.android.support:design:25.3.1'
 }
