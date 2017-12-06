@@ -10,6 +10,7 @@ public interface ChoiceConstract {
     interface IChoiceView{
         void ShowData(ChoiceBean choiceBean);
         void ShowError(String e);
+        void ShowNetEnd();
     }
     interface IChoiceModel{
         void OnRequestData(String url,OnChoiceListener onChoiceListener);
@@ -17,6 +18,7 @@ public interface ChoiceConstract {
     interface OnChoiceListener{
         void OnSuccess(ChoiceBean choiceBean);
         void OnError(String e);
+        void OnEnd();
     }
     interface IChoicePresenter{
         void LoadData(String url);

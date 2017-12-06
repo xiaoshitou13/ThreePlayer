@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,21 +7,46 @@
     xmlns:hjm="http://schemas.android.com/apk/res-auto"
     tools:context="byc.by.com.threeplayer.MainActivity">
 
-    <com.hjm.bottomtabbar.BottomTabBar
-        android:id="@+id/bottom_tab_bar"
+
+    <byc.by.com.threeplayer.cehua.MyHorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        hjm:tab_font_size="8sp"
-        hjm:tab_img_font_padding="0dp"
-        hjm:tab_img_height="30dp"
-        hjm:tab_img_width="30dp"
-        hjm:tab_isshow_divider="true"
-        hjm:tab_padding_bottom="5dp"
-        hjm:tab_padding_top="8dp"
-        hjm:tab_selected_color="#FF6600"
-        hjm:tab_unselected_color="#5d646f"
-        >
-    </com.hjm.bottomtabbar.BottomTabBar>
+        android:scrollbars="none">
 
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <include layout="@layout/left_menu" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f555">
+
+                <com.hjm.bottomtabbar.BottomTabBar xmlns:hjm="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/bottom_tab_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    hjm:tab_font_size="8sp"
+                    hjm:tab_img_font_padding="0dp"
+                    hjm:tab_img_height="30dp"
+                    hjm:tab_img_width="30dp"
+                    hjm:tab_isshow_divider="true"
+                    hjm:tab_padding_bottom="5dp"
+                    hjm:tab_padding_top="8dp"
+                    hjm:tab_selected_color="#FF6600"
+                    hjm:tab_unselected_color="#5d646f"></com.hjm.bottomtabbar.BottomTabBar>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </byc.by.com.threeplayer.cehua.MyHorizontalScrollView>
+
+
+</RelativeLayout>
+
+
+
