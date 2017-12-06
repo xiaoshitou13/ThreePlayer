@@ -18,6 +18,7 @@ public class CommentFragment extends Fragment {
 
     private View view;
 
+    //
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
