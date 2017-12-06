@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    xmlns:hjm="http://schemas.android.com/apk/res-auto"
     tools:context="byc.by.com.threeplayer.MainActivity">
 
     <com.hjm.bottomtabbar.BottomTabBar
         android:id="@+id/bottom_tab_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:hjm="http://schemas.android.com/apk/res-auto"
+
         hjm:tab_font_size="8sp"
         hjm:tab_img_font_padding="0dp"
         hjm:tab_img_height="30dp"

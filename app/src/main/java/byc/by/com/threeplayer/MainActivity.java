@@ -44,10 +44,13 @@ public class MainActivity extends BaseActivity {
 
 
         bottomTabBar.init(getSupportFragmentManager())
+
                 .addTabItem("精选", R.mipmap.found, ChoiceFragment.class)
                 .addTabItem("专题", R.mipmap.special, TopicFragment.class)
                 .addTabItem("发现", R.mipmap.search, FindFragment.class)
-                .addTabItem("我的", R.mipmap.my, MyFragment.class);
+                .addTabItem("我的", R.mipmap.my, MyFragment.class) ;
+
+
     }
 
 
