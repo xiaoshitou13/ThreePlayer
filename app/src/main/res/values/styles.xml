@@ -8,4 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Myone" >
+        <item name="android:textColor">#ffff</item>
+        <item name="android:color">#062EB1</item>
+        <item name="android:background">@mipmap/bg_blue</item>
+    </style>
+
+
+
 </resources>
