@@ -9,7 +9,7 @@ import com.hjm.bottomtabbar.BottomTabBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import byc.by.com.threeplayer.base.BaseActivity;
-import byc.by.com.threeplayer.choice.ChoiceFragment;
+import byc.by.com.threeplayer.choice.view.ChoiceFragment;
 import byc.by.com.threeplayer.find.FindFragment;
 import byc.by.com.threeplayer.my.MyFragment;
 import byc.by.com.threeplayer.topic.TopicFragment;
