@@ -1,6 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:id="@+id/mytou"
+        android:layout_marginTop=""
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wode"
+            android:layout_centerInParent="true"
+            android:textColor="@color/wodetvColor"
+            android:textSize="24sp"/>
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@mipmap/my_bg"
+        android:id="@+id/imtu"
+        android:layout_below="@+id/mytou">
+
+
+    </ImageView>
+
+    <ImageButton
+        android:id="@+id/setimageicon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/mytou"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="54dp"
+        android:background="@mipmap/my_set" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/linearlayout"
+            android:background="@mipmap/bg_blue"
+            android:layout_below="@+id/imtu">
+
+            <RelativeLayout
+                android:id="@+id/Relative"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="60dp"
+                android:gravity="fill_vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/l1"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="历史"
+                        android:textColor="#ffffffff"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="20sp"
+                        android:id="@+id/t1"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/right"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffffffff"
+                    android:layout_below="@+id/l1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/i1"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/i1"
+                    android:id="@+id/re1"
+                    android:visibility="gone"
+
+                    >
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="15dp"
+                        android:id="@+id/woderecy"></android.support.v7.widget.RecyclerView>
+
+                </RelativeLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffff"
+                    android:id="@+id/ir"
+                    android:visibility="gone"
+                    android:layout_marginLeft="15dp"
+                    android:layout_below="@+id/re1"
+                    android:layout_marginTop="10dp"/>
+
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/l2"
+                    android:layout_below="@+id/re1"
+                    android:layout_marginTop="20dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="缓存"
+                        android:textColor="#ffffffff"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="20sp"
+                        android:id="@+id/t2"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/right"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffffffff"
+                    android:layout_below="@+id/l2"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/i2"/>
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/l3"
+                    android:layout_below="@+id/i2"
+                    android:layout_marginTop="20dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="收藏"
+                        android:textColor="#ffffffff"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="20sp"
+                        android:id="@+id/t3"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/right"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffffffff"
+                    android:layout_below="@+id/l3"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/i3"/>
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/l4"
+                    android:layout_below="@+id/i3"
+                    android:layout_marginTop="20dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="主题"
+                        android:textColor="#ffffffff"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp"
+                        android:textSize="20sp"
+                        android:id="@+id/t4"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@mipmap/right"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#ffffffff"
+                    android:layout_below="@+id/l4"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="15dp"
+                    android:id="@+id/i4"/>
+            </RelativeLayout>
+
+
+
+
+
+        </RelativeLayout>
+
+</RelativeLayout>
