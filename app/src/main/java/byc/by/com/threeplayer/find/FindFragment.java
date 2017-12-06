@@ -21,7 +21,9 @@ import butterknife.Unbinder;
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseFragment;
 import byc.by.com.threeplayer.find.adapter.MyAdapters;
+
 import byc.by.com.threeplayer.find.bean.IjkitBean;
+
 import byc.by.com.threeplayer.find.cardswipelayout.CardConfig;
 import byc.by.com.threeplayer.find.cardswipelayout.CardItemTouchHelperCallback;
 import byc.by.com.threeplayer.find.cardswipelayout.CardLayoutManager;
