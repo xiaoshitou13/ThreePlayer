@@ -46,16 +46,16 @@ public class Fuli_Activity extends BaseActivity implements Iview {
                 i++;
                 presenter.getBean1(path);
                 Toast.makeText(Fuli_Activity.this, "刷新成功", Toast.LENGTH_LONG).show();
-        swi.setRefreshing(false);
-}
+                swi.setRefreshing(false);
+            }
         });
-                }
+    }
 
-@Override
-public void getBean1(FuliBean bean) {
+    @Override
+    public void getBean1(FuliBean bean) {
         Log.d("tags", bean.toString());
         adapter.add(bean.data);
-        }
+    }
 
     @Override
     public void getBean(FuliBean bean) {
