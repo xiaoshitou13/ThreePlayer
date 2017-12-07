@@ -4,15 +4,17 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+
     >
-   <ImageView
-       android:layout_marginTop="10dp"
-       android:layout_width="150dp"
-       android:layout_height="170dp"
-       android:id="@+id/imageview"
-       android:layout_centerHorizontal="true"
-       />
+    <ImageView
+        android:layout_marginTop="10dp"
+        android:layout_width="150dp"
+        android:layout_height="170dp"
+        android:id="@+id/imageview"
+        android:layout_centerHorizontal="true"
+        />
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="14dp"
@@ -21,7 +23,7 @@
         android:layout_below="@id/imageview"
         android:layout_centerHorizontal="true"
         android:textSize="18dp"
-    android:text="偏偏细化你"
+        android:text="偏偏细化你"
         />
 
 </RelativeLayout>
