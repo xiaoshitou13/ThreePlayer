@@ -24,7 +24,7 @@ public class ChoiceModel implements ChoiceConstract.IChoiceModel{
                 .subscribe(new Observer<ChoiceBean>() {
                     @Override
                     public void onCompleted() {
-
+                        onChoiceListener.OnEnd();
                     }
 
                     @Override

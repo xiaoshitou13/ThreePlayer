@@ -1,13 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.stx.xhb.xbanner.XBanner
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </com.stx.xhb.xbanner.XBanner>
+        <utils.ObservableScrollView
+            android:id="@+id/osl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.stx.xhb.xbanner.XBanner
+                    android:id="@+id/xban"
+                    android:layout_width="match_parent"
+                    android:layout_height="250.0dip"
+                    android:layout_marginBottom="10dp"
+                    app:AutoPlayTime="3000"
+                    app:pointsContainerBackground="#44AAAAAA"
+                    app:pointsPosition="RIGHT"
+                    app:tipTextColor="#FFFFFFFF"
+                    app:tipTextSize="16.0sp">
+
+                </com.stx.xhb.xbanner.XBanner>
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rcv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+
+
+            </LinearLayout>
+        </utils.ObservableScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toptoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize">
+
+        <TextView
+            android:id="@+id/tv_choice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="精选"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </android.support.v7.widget.Toolbar>
+</RelativeLayout>

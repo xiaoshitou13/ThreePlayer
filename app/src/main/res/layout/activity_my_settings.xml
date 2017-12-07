@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="byc.by.com.threeplayer.my.MySettings">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:id="@+id/jilutou"
+        android:background="@color/zongse">
+
+        <ImageButton
+            android:id="@+id/seticon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/back"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shezhi"
+            android:layout_centerInParent="true"
+            android:textColor="#ffff"
+            android:textSize="24sp"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/jilutou"
+        android:id="@+id/jiluti"
+        android:background="@mipmap/bg">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/jiluone"
+            android:layout_marginTop="25dp"
+            >
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/jlhaoyou"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/jiluone"
+            android:layout_marginTop="16dp"
+            android:background="#33000000">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:text="推荐给好友"
+                android:textColor="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:background="@mipmap/right"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/jlhaoyou1"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/jlhaoyou"
+            android:layout_marginTop="4dp"
+            android:background="#33000000">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:text="清理缓存"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:text="20.00kb"
+                android:id="@+id/settvhc"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/jlhaoyou2"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/jlhaoyou1"
+            android:layout_marginTop="25dp"
+            android:background="#33000000">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:text="关于我们"
+                android:textColor="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@mipmap/right" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/jlhaoyou3"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/jlhaoyou2"
+            android:layout_marginTop="4dp"
+            android:background="#33000000">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:text="建议反馈"
+                android:textColor="#ffffff" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="20dp"
+                android:background="@mipmap/right" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

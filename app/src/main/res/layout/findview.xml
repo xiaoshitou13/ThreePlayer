@@ -3,7 +3,13 @@
     android:layout_width="400dp"
     android:layout_height="550dp"
     android:background="@drawable/card_bg_def"
+
+    android:gravity="center"
+
+    >
+
     android:gravity="center">
+
 
     <LinearLayout
         android:id="@+id/ttt"
@@ -26,6 +32,7 @@
 
             <byc.by.com.threeplayer.find.cardswipelayout.RoundImageView
                 android:id="@+id/imggg"
+
                 android:layout_width="200dp"
                 android:layout_height="300dp"
                 android:layout_centerHorizontal="true"

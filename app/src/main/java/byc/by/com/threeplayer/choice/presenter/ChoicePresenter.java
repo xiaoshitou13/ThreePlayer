@@ -30,6 +30,11 @@ public class ChoicePresenter implements ChoiceConstract.IChoicePresenter {
             public void OnError(String e) {
                 iChoiceView.ShowError(e);
             }
+
+            @Override
+            public void OnEnd() {
+                iChoiceView.ShowNetEnd();
+            }
         });
     }
 }
