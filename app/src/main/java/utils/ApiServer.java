@@ -32,7 +32,7 @@ public interface ApiServer {
     Observable<Topic_Bean> getTopic(@Url String s);
 
     @GET
-    Observable<FindBean> Fuli(@Url String s);
+    Observable<FuliBean> Fuli(@Url String s);
     @GET
     Observable<Video> video();
     @GET

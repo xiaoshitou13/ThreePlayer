@@ -117,7 +117,7 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
 
                 builder1.setTitle("关于我们");
 
-                builder1.setIcon(R.mipmap.my_select);
+
 
                 View vs = LayoutInflater.from(this).inflate(R.layout.gywmitm, null);
                 TextView boke = vs.findViewById(R.id.gytv);
