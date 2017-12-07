@@ -112,6 +112,12 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        player.stop();
+    }
+
+    @Override
     public void onComplete() {
 
     }
