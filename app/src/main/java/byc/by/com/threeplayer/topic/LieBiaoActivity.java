@@ -1,16 +1,24 @@
 package byc.by.com.threeplayer.topic;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
+import android.view.View;
+
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseActivity;
+import byc.by.com.threeplayer.find.bean.IjkitBean;
+import byc.by.com.threeplayer.find.view.Ijkitplayer;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -28,11 +36,14 @@ public class LieBiaoActivity extends BaseActivity {
     @BindView(R.id.srl_main)
     SwipeRefreshLayout srlMain;
     private MyAdapter_LieBiao myAdapter;
+    List<Topic_Bean.RetBean.ListBean> list;
+    int index=0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liebiao_activity);
+        index=Integer.valueOf(getIntent().getStringExtra("key"));
         ButterKnife.bind(this);
         init();
     }
@@ -47,7 +58,7 @@ public class LieBiaoActivity extends BaseActivity {
         });
 
         ApiServer topic = RetroFactory.Topic();
-        Observable<Topic_Bean> topic1 = topic.getTopic("/front/columns/getVideoList.do?catalogId=402834815584e463015584e539330016&pnum=1");
+        Observable<Topic_Bean> topic1 = topic.getTopic("/front/columns/getVideoList.do?catalogId=402834815584e463015584e539330016&pnum="+index);
         topic1.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Topic_Bean>() {
@@ -63,11 +74,23 @@ public class LieBiaoActivity extends BaseActivity {
 
                     @Override
                     public void onNext(Topic_Bean topic_bean) {
-                        Log.d("sdfds",topic_bean.toString());
                         ryvMain.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
-                        myAdapter=new MyAdapter_LieBiao(topic_bean.getRet().getList(),LieBiaoActivity.this);
+                        list=topic_bean.getRet().getList();
+                        myAdapter=new MyAdapter_LieBiao(list,LieBiaoActivity.this);
                         ryvMain.setAdapter(myAdapter);
+                        myAdapter.setOnItemClickListener(new MyAdapter_LieBiao.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                EventBus.getDefault().postSticky(new IjkitBean(list.get(position).getLoadURL()));
+                                startActivity(new Intent(LieBiaoActivity.this, Ijkitplayer.class));
+                            }
+                        });
                     }
                 });
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
