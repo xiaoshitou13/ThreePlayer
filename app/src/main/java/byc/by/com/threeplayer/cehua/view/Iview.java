@@ -8,4 +8,5 @@ import byc.by.com.threeplayer.cehua.Bean.FuliBean;
 
 public interface Iview {
     void getBean(FuliBean bean);
+    void getBean1(FuliBean bean);
 }

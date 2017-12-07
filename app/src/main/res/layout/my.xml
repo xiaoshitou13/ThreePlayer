@@ -10,7 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:id="@+id/mytou"
-        android:layout_marginTop=""
         android:background="@color/colorPrimary">
 
         <TextView
@@ -18,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="@string/wode"
             android:layout_centerInParent="true"
-            android:textColor="@color/wodetvColor"
+            android:textColor="#5644"
             android:textSize="24sp"/>
 
     </RelativeLayout>

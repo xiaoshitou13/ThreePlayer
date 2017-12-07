@@ -94,7 +94,7 @@ public class MainActivity extends BaseActivity {
                 .addTabItem("精选", R.mipmap.found, ChoiceFragment.class)
                 .addTabItem("专题", R.mipmap.special, TopicFragment.class)
                 .addTabItem("发现", R.mipmap.search, FindFragment.class)
-                .addTabItem("我的", R.mipmap.my, MyFragment.class) ;
+                .addTabItem("我的", R.mipmap.my, MyFragment.class);
 
 
     }
@@ -108,6 +108,7 @@ public class MainActivity extends BaseActivity {
             case R.id.menutext1:
                 break;
             case R.id.menutext2:
+                Toast.makeText(MainActivity.this, "敬请期待", Toast.LENGTH_LONG).show();
                 break;
             case R.id.menutext3:
                 startActivity(new Intent(MainActivity.this, Fuli_Activity.class));
