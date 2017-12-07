@@ -87,12 +87,13 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
 
 
 
+
         IntroduceFragment fragment1=new IntroduceFragment();
         CommentFragment fragment2=new CommentFragment();
 
         flist.add(fragment1);
         flist.add(fragment2);
-        //Tablaout的方式进行联动效果
+        //Tablaout的方式进行联动效 果
         tablayout.setTabMode(TabLayout.MODE_FIXED);//滑动模式
         Myviewpager myviewpager=new Myviewpager(getSupportFragmentManager());
         viewpage.setAdapter(myviewpager);

@@ -118,7 +118,7 @@ public class FindFragment extends BaseFragment implements Iview {
                 final CardLayoutManager cardLayoutManager = new CardLayoutManager(recyclers, touchHelper);
                 recyclers.setLayoutManager(cardLayoutManager);
                 touchHelper.attachToRecyclerView(recyclers);
-        mAdapter.setItemOnclicklistener(new MyAdapters.ItemOnclicklistener() {
+                mAdapter.setItemOnclicklistener(new MyAdapters.ItemOnclicklistener() {
             @Override
             public void item(View view, int postion) {
                 String loadURL = ret.getList().get(postion).getLoadURL();
@@ -136,7 +136,6 @@ public class FindFragment extends BaseFragment implements Iview {
             public void onClick() {
                 page++;
                 presenter.getdata(page + "");
-
             }
 
     @Override
