@@ -23,10 +23,12 @@ public class BaseActivity extends SupportActivity {
 
     private void init() {
         setTranslucentStatus(true);
+
         if (enableSliding()) {
             SlidingLayout rootView = new SlidingLayout(this);
             rootView.bindActivity(this);
         }
+
     }
     /**
      * 设置沉浸式
