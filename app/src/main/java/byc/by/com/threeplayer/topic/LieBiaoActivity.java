@@ -37,11 +37,13 @@ public class LieBiaoActivity extends BaseActivity {
     SwipeRefreshLayout srlMain;
     private MyAdapter_LieBiao myAdapter;
     List<Topic_Bean.RetBean.ListBean> list;
+    int index=0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.liebiao_activity);
+        index=Integer.valueOf(getIntent().getStringExtra("key"));
         ButterKnife.bind(this);
         init();
     }
@@ -56,7 +58,7 @@ public class LieBiaoActivity extends BaseActivity {
         });
 
         ApiServer topic = RetroFactory.Topic();
-        Observable<Topic_Bean> topic1 = topic.getTopic("/front/columns/getVideoList.do?catalogId=402834815584e463015584e539330016&pnum=1");
+        Observable<Topic_Bean> topic1 = topic.getTopic("/front/columns/getVideoList.do?catalogId=402834815584e463015584e539330016&pnum="+index);
         topic1.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<Topic_Bean>() {
