@@ -47,8 +47,26 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         ((ViewHolder)holder).tv.setText(list.get(position));
-        Glide.with(context).load("https://img03.sogoucdn.com/net/a/04/link?url=http%3A%2F%2Fimg02." +
-                "sogoucdn.com%2Fapp%2Fa%2F100520024%2F14370e41bd054e673d3daa8a2a119520&appid=122").priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        if (position==0){
+            Glide.with(context).load("https://ss0.bdstatic.com/" +
+                    "70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1284277663,704882301" +
+                    "&fm=27&gp=0.jpg").priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        }else if (position==1){
+            Glide.with(context).load("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1960433012,512870012&fm=27&gp=0.jpg").priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        }else if (position==2){
+            Glide.with(context).load("https://ss0.bdstatic." +
+                    "com/70cFuHSh_Q1YnxGkpoWK1HF" +
+                    "6hhy/it/u=977627844,3660044690&fm=27&gp=0." +
+                    "jpg").priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        }else if (position==3){
+            Glide.with(context).load("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1500936734,2824320535&fm=27&gp=0.jpg").priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        }else if (position==4){
+            Glide.with(context).load("https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3086034579,24204398&fm=27&gp=0.jpg" ).priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        }else if (position==5){
+            Glide.with(context).load("https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3775571764,310723784&fm=27&gp=0.jpg" ).priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        }else if (position==6){
+            Glide.with(context).load("https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3652314724,2239330761&fm=27&gp=0.jpg").priority(Priority.HIGH).into(((ViewHolder)holder).img);
+        }
         //判断是否设置了监听器
         if(mOnItemClickListener != null){
             //为ItemView设置监听器

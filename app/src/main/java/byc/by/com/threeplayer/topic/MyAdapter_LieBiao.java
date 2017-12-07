@@ -40,7 +40,7 @@ public class MyAdapter_LieBiao extends RecyclerView.Adapter<RecyclerView.ViewHol
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.glv_item,parent,false));
+        return new ViewHolder(LayoutInflater.from(context).inflate(R.layout.glv_item1,parent,false));
     }
 
     @Override
