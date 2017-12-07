@@ -15,18 +15,25 @@
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/me_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".find.view.Ijkitplayer" />
+        <activity android:name=".cehua.Fuli_Activity" />
+        <activity android:name=".topic.LieBiaoActivity" />
+        <activity android:name=".welcome.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
 
         <activity android:name=".topic.LieBiaoActivity" />
         <activity android:name=".my.MySettings" />
@@ -39,6 +46,7 @@
         <activity android:name=".cehua.Fuli_Activity"></activity>
 
         <activity android:name=".topic.LieBiaoActivity"></activity>
+
 
 
 

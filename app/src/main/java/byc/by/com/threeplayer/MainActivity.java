@@ -125,4 +125,9 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
+
+    @Override
+    protected boolean enableSliding() {
+        return false;
+    }
 }
