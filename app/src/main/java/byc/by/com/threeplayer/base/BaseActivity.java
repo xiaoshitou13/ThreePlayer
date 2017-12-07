@@ -7,6 +7,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import me.yokeyword.fragmentation.SupportActivity;
+import utils.SlidingLayout;
 
 /**
  * Created by Zhang on 2017/12/5.
@@ -22,6 +23,10 @@ public class BaseActivity extends SupportActivity {
 
     private void init() {
         setTranslucentStatus(true);
+        if (enableSliding()) {
+            SlidingLayout rootView = new SlidingLayout(this);
+            rootView.bindActivity(this);
+        }
     }
     /**
      * 设置沉浸式
@@ -40,5 +45,9 @@ public class BaseActivity extends SupportActivity {
             }
             win.setAttributes(winParams);
         }
+    }
+
+    protected boolean enableSliding() {
+        return true;
     }
 }
