@@ -2,6 +2,7 @@ package byc.by.com.threeplayer.choice.view;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,7 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.stx.xhb.xbanner.XBanner;
+import com.stx.xhb.xbanner.transformers.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,30 +36,26 @@ import byc.by.com.threeplayer.choice.bean.ChoiceBean;
 import byc.by.com.threeplayer.choice.presenter.ChoicePresenter;
 import utils.Api;
 import utils.ObservableScrollView;
+import utils.XXbanner;
 
 /**
  * Created by Zhang on 2017/12/5.
  */
 
-public class ChoiceFragment extends BaseFragment implements ChoiceConstract.IChoiceView, SwipeRefreshLayout.OnRefreshListener {
+public class ChoiceFragment extends BaseFragment implements ChoiceConstract.IChoiceView, XRecyclerView.LoadingListener {
 
-
-    @BindView(R.id.rcv)
-    RecyclerView rcv;
 
     Unbinder unbinder;
-    @BindView(R.id.xban)
-    XBanner xban;
-    @BindView(R.id.osl)
-    ObservableScrollView osl;
+    @BindView(R.id.rcv)
+    XRecyclerView rcv;
     @BindView(R.id.tv_choice)
     TextView tvChoice;
     @BindView(R.id.toptoolbar)
     Toolbar toptoolbar;
-    @BindView(R.id.srl)
-    SwipeRefreshLayout srl;
+
     private ChoicePresenter choicePresenter;
     private int banheight;
+    private XXbanner xban;
 
     @Nullable
     @Override
@@ -64,15 +63,21 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
 
         View v = inflater.inflate(R.layout.choice, container, false);
         unbinder = ButterKnife.bind(this, v);
-
+        View abnv = View.inflate(getActivity(), R.layout.xbann, null);
+        xban = (XXbanner) abnv.findViewById(R.id.xban);
+        rcv.addHeaderView(abnv);
+        xban.setPageTransformer(Transformer.Rotate);
         choicePresenter = new ChoicePresenter(this);
         choicePresenter.LoadData(Api.CHOICE_PATH);
+
         initdatas();
 
         return v;
     }
 
     private void initdatas() {
+        rcv.setLoadingListener(this);
+        rcv.setLoadingMoreEnabled(false);
         tvChoice.bringToFront();
         ViewTreeObserver vto = xban.getViewTreeObserver();
         vto.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -82,7 +87,7 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
                 banheight = xban.getHeight();
             }
         });
-        srl.setOnRefreshListener(this);
+
     }
 
     @Override
@@ -104,15 +109,19 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
                 Glide.with(getActivity()).load(xbanimg.get(position)).into((ImageView) view);
             }
         });
-        osl.setScrollViewListener(new ObservableScrollView.ScrollViewListener() {
+        rcv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            private int totalDy = 0;
+
             @Override
-            public void onScrollChanged(ObservableScrollView scrollView, int x, int y, int oldx, int oldy) {
-                if (y <= 0) {
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                totalDy += dy;
+                // Toast.makeText(TestActivity.this, ""+totalDy, Toast.LENGTH_SHORT).show();
+                if (totalDy <= 0) {
                     tvChoice.setVisibility(View.GONE);
                     toptoolbar.setBackgroundColor(Color.argb((int) 0, 227, 29, 26));//AGB由相关工具获得，或者美工提供
-                } else if (y > 0 && y <= banheight) {
+                } else if (totalDy > 0 && totalDy <= banheight) {
                     tvChoice.setVisibility(View.VISIBLE);
-                    float scale = (float) y / banheight;
+                    float scale = (float) totalDy / banheight;
                     float alpha = (255 * scale);
                     // 只是layout背景透明
                     toptoolbar.setBackgroundColor(Color.argb((int) alpha, 227, 29, 26));
@@ -122,7 +131,6 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
                 }
             }
         });
-
     }
 
     @Override
@@ -133,7 +141,13 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
 
     @Override
     public void ShowNetEnd() {
-        srl.setRefreshing(false);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                rcv.refreshComplete();
+            }
+        }, 1500);
+
     }
 
     @Override
@@ -149,8 +163,14 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
 
     }
 
+
     @Override
     public void onRefresh() {
         choicePresenter.LoadData(Api.CHOICE_PATH);
+    }
+
+    @Override
+    public void onLoadMore() {
+
     }
 }
