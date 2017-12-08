@@ -26,7 +26,9 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".find.view.Ijkitplayer" />
+        <activity android:name=".find.view.Ijkitplayer"
+            android:launchMode="singleTop"
+            />
         <activity android:name=".cehua.Fuli_Activity" />
         <activity android:name=".topic.LieBiaoActivity" />
         <activity android:name=".welcome.WelcomeActivity">
@@ -36,6 +38,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".my.MySettings" />
+        <activity android:name=".my.MywebViewClass"></activity>
+        //qq
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent1105602574" /> <!-- 开放平台获取的APPID -->
+            </intent-filter>
+        </activity>
+        <activity android:name="com.tencent.connect.common.AssistActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:screenOrientation="portrait"/>
+
 
 
         <activity android:name=".my.MySettings" />
@@ -73,6 +94,7 @@
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="5a2a2b14b27b0a0b100028e4"></meta-data>
+
 
 
 

@@ -3,6 +3,7 @@ package byc.by.com.threeplayer;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,8 +11,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
 import com.hjm.bottomtabbar.BottomTabBar;
 import com.makeramen.roundedimageview.RoundedImageView;
+
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.ShareContent;
 import com.umeng.socialize.UMShareAPI;
@@ -21,10 +25,22 @@ import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.shareboard.SnsPlatform;
 import com.umeng.socialize.utils.ShareBoardlistener;
 
+import com.tencent.connect.UserInfo;
+import com.tencent.connect.auth.QQToken;
+import com.tencent.connect.common.Constants;
+import com.tencent.tauth.IUiListener;
+import com.tencent.tauth.Tencent;
+import com.tencent.tauth.UiError;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import byc.by.com.threeplayer.base.BaseActivity;
+import byc.by.com.threeplayer.cehua.Adapter.QQLoginBean;
 import byc.by.com.threeplayer.cehua.Fuli_Activity;
 import byc.by.com.threeplayer.choice.view.ChoiceFragment;
 import byc.by.com.threeplayer.find.FindFragment;
@@ -72,7 +88,11 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.bottom_menu)
     LinearLayout bottomMenu;
     private long firstTime = 0;
-
+    private static final String TAG = "MainActivity";
+    private static final String APP_ID = "1105602574";//官方获取的APPID
+    private Tencent mTencent;
+    private BaseUiListener mIUiListener;
+    private UserInfo mUserInfo;
 
     @BindView(R.id.bottom_tab_bar)
     BottomTabBar bottomTabBar;
@@ -97,7 +117,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
+        mTencent = Tencent.createInstance(APP_ID, MainActivity.this.getApplicationContext());
 
         bottomTabBar.init(getSupportFragmentManager())
 
@@ -207,9 +227,83 @@ public class MainActivity extends BaseActivity {
         return false;
     }
 
+
+    @OnClick(R.id.avatar)
+    public void onClick() {
+        mIUiListener = new BaseUiListener();
+        //all表示获取所有权限
+        mTencent.login(MainActivity.this, "all", mIUiListener);
+    }
+    class BaseUiListener implements IUiListener {
+
+        @Override
+        public void onComplete(Object response) {
+            Toast.makeText(MainActivity.this, "授权成功", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "response:" + response);
+            JSONObject obj = (JSONObject) response;
+            try {
+                String openID = obj.getString("openid");
+                String accessToken = obj.getString("access_token");
+                String expires = obj.getString("expires_in");
+                mTencent.setOpenId(openID);
+                mTencent.setAccessToken(accessToken, expires);
+                QQToken qqToken = mTencent.getQQToken();
+                mUserInfo = new UserInfo(getApplicationContext(), qqToken);
+                mUserInfo.getUserInfo(new IUiListener() {
+                    @Override
+                    public void onComplete(Object response) {
+                        //是一个json串response.tostring，直接使用gson解析就好
+                        Log.e(TAG, "登录成功" + response.toString());
+                        Gson gson=new Gson();
+
+                        QQLoginBean qqLoginBean = gson.fromJson(response.toString(), QQLoginBean.class);
+                        Glide.with(MainActivity.this).load(qqLoginBean.getFigureurl_1()).into(avatar);
+                    }
+
+                    @Override
+                    public void onError(UiError uiError) {
+                        Log.e(TAG, "登录失败" + uiError.toString());
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Log.e(TAG, "登录取消");
+
+                    }
+                });
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void onError(UiError uiError) {
+            Toast.makeText(MainActivity.this, "授权失败", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onCancel() {
+            Toast.makeText(MainActivity.this, "授权取消", Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
+
+    /**
+     * 在调用Login的Activity或者Fragment中重写onActivityResult方法
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constants.REQUEST_LOGIN) {
+            Tencent.onActivityResultData(requestCode, resultCode, data, mIUiListener);
+        }
         super.onActivityResult(requestCode, resultCode, data);
-        UMShareAPI.get(MainActivity.this).onActivityResult(requestCode, resultCode, data);
+
     }
 }
+
