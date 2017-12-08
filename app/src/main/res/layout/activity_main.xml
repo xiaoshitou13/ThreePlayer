@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/bg_blue"
     xmlns:hjm="http://schemas.android.com/apk/res-auto"
+
     tools:context="byc.by.com.threeplayer.MainActivity">
 
 

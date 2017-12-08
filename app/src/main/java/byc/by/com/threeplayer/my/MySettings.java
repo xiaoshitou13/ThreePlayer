@@ -33,6 +33,10 @@ import java.io.FileReader;
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.my.yuying.AudioRecoderDialog;
 import byc.by.com.threeplayer.my.yuying.AudioRecoderUtils;
+import utils.DataCleanManager;
+
+import static utils.DataCleanManager.getFolderSize;
+import static utils.DataCleanManager.getFormatSize;
 
 public class MySettings extends AppCompatActivity implements View.OnClickListener , View.OnTouchListener, AudioRecoderUtils.OnAudioStatusUpdateListener{
     private AudioRecoderDialog recoderDialog;
@@ -79,6 +83,13 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
         mSettvhc = (TextView) findViewById(R.id.settvhc);
         mSeticon = (ImageButton) findViewById(R.id.seticon);
         mSeticon.setOnClickListener(this);
+
+        try {
+            String size = getTotalCacheSize(getApplicationContext());
+            mSettvhc.setText(""+size);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -109,7 +120,11 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
                 builder.show();
                 break;
             case R.id.jlhaoyou1:
-                mSettvhc.setText("0kb");
+                DataCleanManager.cleanInternalCache(this);
+                DataCleanManager.cleanExternalCache(this);
+
+                 clearAllCache(getApplicationContext());  //清除
+                mSettvhc.setText("0");
                 Toast.makeText(this, "清理完毕", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.jlhaoyou2:
@@ -275,4 +290,44 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
             recoderDialog.setTime(System.currentTimeMillis() - downT);
         }
     }
+
+
+    /**
+     * 获取缓存大小
+     * @param context
+     * @return
+     * @throws Exception
+     */
+    public static String getTotalCacheSize(Context context) throws Exception {
+        long cacheSize = getFolderSize(context.getCacheDir());
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            cacheSize += getFolderSize(context.getExternalCacheDir());
+        }
+        return getFormatSize(cacheSize);
+    }
+
+    /**
+     * 清除缓存
+     * @param context
+     */
+    public static void clearAllCache(Context context) {
+        deleteDir(context.getCacheDir());
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            deleteDir(context.getExternalCacheDir());
+        }
+    }
+
+    private static boolean deleteDir(File dir) {
+        if (dir != null && dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
+        return dir.delete();
+    }
+
 }

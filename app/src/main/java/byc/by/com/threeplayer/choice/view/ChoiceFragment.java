@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -39,8 +38,8 @@ import byc.by.com.threeplayer.choice.bean.ChoiceBean;
 import byc.by.com.threeplayer.choice.presenter.ChoicePresenter;
 import byc.by.com.threeplayer.find.bean.IjkitBean;
 import byc.by.com.threeplayer.find.view.Ijkitplayer;
+import byc.by.com.threeplayer.my.sqlites.dao;
 import utils.Api;
-import utils.ObservableScrollView;
 import utils.XXbanner;
 
 /**
@@ -139,6 +138,8 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
         xban.setOnItemClickListener(new XBanner.OnItemClickListener() {
             @Override
             public void onItemClick(XBanner banner, int position) {
+                dao dao = new dao(getContext());
+                dao.add(childList0.get(position).getTitle(),childList0.get(position).getPic(),childList0.get(position).getLoadURL());
                 EventBus.getDefault().postSticky(new IjkitBean(childList0.get(position).getLoadURL()));
                 Intent in = new Intent(getActivity(), Ijkitplayer.class);
                 startActivity(in);

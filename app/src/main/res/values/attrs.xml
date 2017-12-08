@@ -3,4 +3,7 @@
     <declare-styleable name="RoundImageView">
         <attr name="radius" format="reference|dimension" />
     </declare-styleable>
+
+    <attr name="appbg" format="reference"></attr>
+    <attr name="Relatebg" format="reference"></attr>
 </resources>
