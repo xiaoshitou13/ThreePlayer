@@ -10,7 +10,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +66,7 @@ public class TopicFragment extends BaseFragment {
         myAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+
                 Intent intent = new Intent(getActivity(),LieBiaoActivity.class);
                 intent.putExtra("key",position+"");
                 startActivity(intent);

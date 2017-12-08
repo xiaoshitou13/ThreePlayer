@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
@@ -19,6 +18,7 @@ import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseActivity;
 import byc.by.com.threeplayer.find.bean.IjkitBean;
 import byc.by.com.threeplayer.find.view.Ijkitplayer;
+import byc.by.com.threeplayer.my.sqlites.dao;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -81,6 +81,8 @@ public class LieBiaoActivity extends BaseActivity {
                         myAdapter.setOnItemClickListener(new MyAdapter_LieBiao.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
+                                dao dao = new dao(LieBiaoActivity.this);
+                                dao.add(list.get(position).getTitle(),list.get(position).getPic(),list.get(position).getLoadURL());
                                 EventBus.getDefault().postSticky(new IjkitBean(list.get(position).getLoadURL()));
                                 startActivity(new Intent(LieBiaoActivity.this, Ijkitplayer.class));
                             }

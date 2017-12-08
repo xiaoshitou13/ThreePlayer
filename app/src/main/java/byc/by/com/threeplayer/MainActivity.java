@@ -85,16 +85,17 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
-
-
         bottomTabBar.init(getSupportFragmentManager())
 
                 .addTabItem("精选", R.mipmap.found, ChoiceFragment.class)
                 .addTabItem("专题", R.mipmap.special, TopicFragment.class)
                 .addTabItem("发现", R.mipmap.search, FindFragment.class)
                 .addTabItem("我的", R.mipmap.my, MyFragment.class);
+
 
 
     }
@@ -130,4 +131,6 @@ public class MainActivity extends BaseActivity {
     protected boolean enableSliding() {
         return false;
     }
+
+
 }
