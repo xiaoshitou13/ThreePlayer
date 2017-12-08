@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -69,7 +70,11 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
                 Gson gson = new Gson();
                 Video video = gson.fromJson(result, Video.class);
                 smoothURLs = video.getRet().getSmoothURL();
-                player.play(smoothURLs);
+                if(smoothURLs!=null){
+                    player.play(smoothURLs);
+                }else{
+                    Toast.makeText(Ijkitplayer.this, "暂时无资源", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
