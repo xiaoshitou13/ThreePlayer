@@ -1,4 +1,4 @@
-package byc.by.com.threeplayer.topic;
+package byc.by.com.threeplayer.topic.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +14,7 @@ import com.bumptech.glide.Priority;
 import java.util.List;
 
 import byc.by.com.threeplayer.R;
+import byc.by.com.threeplayer.topic.bean.Topic_Bean;
 
 
 /**

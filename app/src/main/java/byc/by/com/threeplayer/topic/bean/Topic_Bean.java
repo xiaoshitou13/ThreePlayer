@@ -1,4 +1,4 @@
-package byc.by.com.threeplayer.topic;
+package byc.by.com.threeplayer.topic.bean;
 
 import java.util.List;
 
