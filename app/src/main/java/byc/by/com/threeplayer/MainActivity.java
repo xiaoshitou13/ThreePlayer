@@ -1,6 +1,7 @@
 package byc.by.com.threeplayer;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,6 +15,16 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hjm.bottomtabbar.BottomTabBar;
 import com.makeramen.roundedimageview.RoundedImageView;
+
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.ShareContent;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.shareboard.SnsPlatform;
+import com.umeng.socialize.utils.ShareBoardlistener;
+
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
 import com.tencent.connect.common.Constants;
@@ -24,6 +35,7 @@ import com.tencent.tauth.UiError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -33,6 +45,7 @@ import byc.by.com.threeplayer.cehua.Fuli_Activity;
 import byc.by.com.threeplayer.choice.view.ChoiceFragment;
 import byc.by.com.threeplayer.find.FindFragment;
 import byc.by.com.threeplayer.my.MyFragment;
+import byc.by.com.threeplayer.my.MySettings;
 import byc.by.com.threeplayer.topic.TopicFragment;
 
 public class MainActivity extends BaseActivity {
@@ -131,10 +144,17 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this, Fuli_Activity.class));
                 break;
             case R.id.menutext4:
+                new ShareAction(MainActivity.this).setDisplayList(SHARE_MEDIA.SINA, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE, SHARE_MEDIA.WEIXIN)
+                        .setContentList(new ShareContent(), new ShareContent())
+                        .withText("title")
+                        .setListenerList(shareListener, shareListener)
+                        .setShareboardclickCallback(shareBoardlistener)
+                        .open();
                 break;
             case R.id.menutext5:
                 break;
             case R.id.menutext6:
+                startActivity(new Intent(MainActivity.this,MySettings.class));
                 break;
             case R.id.guanyu:
                 break;
@@ -143,10 +163,70 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    private ShareBoardlistener shareBoardlistener = new ShareBoardlistener() {
+
+        @Override
+        public void onclick(SnsPlatform snsPlatform, SHARE_MEDIA share_media) {
+            if (share_media == null) {
+                if (snsPlatform.mKeyword.equals("11")) {
+                    Toast.makeText(MainActivity.this, "add button success", Toast.LENGTH_LONG).show();
+                }
+
+            } else {
+                UMImage image = new UMImage(MainActivity.this,
+                        BitmapFactory.decodeResource(getResources(), R.drawable.card_bg_def));
+
+                new ShareAction(MainActivity.this).setPlatform(share_media).withMedia(image).setCallback(shareListener)
+                        .withText("多平台分享")
+                        .share();
+            }
+        }
+    };
+    private UMShareListener shareListener = new UMShareListener() {
+        /**
+         * @descrption 分享开始的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onStart(SHARE_MEDIA platform) {
+
+        }
+
+        /**
+         * @descrption 分享成功的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Toast.makeText(MainActivity.this, "成功了", Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @descrption 分享失败的回调
+         * @param platform 平台类型
+         * @param t 错误原因
+         */
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(MainActivity.this, "失败" + t.getMessage(), Toast.LENGTH_LONG).show();
+        }
+
+        /**
+         * @descrption 分享取消的回调
+         * @param platform 平台类型
+         */
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(MainActivity.this, "取消了", Toast.LENGTH_LONG).show();
+
+        }
+    };
+
     @Override
     protected boolean enableSliding() {
         return false;
     }
+
 
     @OnClick(R.id.avatar)
     public void onClick() {
@@ -223,6 +303,7 @@ public class MainActivity extends BaseActivity {
             Tencent.onActivityResultData(requestCode, resultCode, data, mIUiListener);
         }
         super.onActivityResult(requestCode, resultCode, data);
+
     }
 }
 
