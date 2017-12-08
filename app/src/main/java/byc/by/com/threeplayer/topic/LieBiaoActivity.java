@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
@@ -78,6 +79,7 @@ public class LieBiaoActivity extends BaseActivity implements Iview{
         myAdapter.setOnItemClickListener(new MyAdapter_LieBiao.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                Log.d("TAGs",list.get(position).getLoadURL());
                 if (list.get(position).getLoadURL().equals("")){
                     startActivity(new Intent(LieBiaoActivity.this, Ijkitplayer.class));
                 }else {
