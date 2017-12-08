@@ -10,7 +10,6 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseFragment;
+import byc.by.com.threeplayer.topic.adapter.MyAdapter;
 
 /**
  * Created by Zhang on 2017/12/5.

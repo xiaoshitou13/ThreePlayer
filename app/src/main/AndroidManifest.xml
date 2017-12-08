@@ -35,6 +35,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".my.MySettings" />
         <activity android:name=".my.MywebViewClass"></activity>
         //qq
@@ -52,6 +53,24 @@
         <activity android:name="com.tencent.connect.common.AssistActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:screenOrientation="portrait"/>
+
+
+
+
+        <activity android:name=".my.MySettings"  />
+        <activity android:name=".my.MywebViewClass"></activity>
+
+        <activity android:name=".base.BaseActivity" android:launchMode="singleTop"></activity>
+
+
+
+
+
+
+
+
+
+
     </application>
 
 </manifest>
