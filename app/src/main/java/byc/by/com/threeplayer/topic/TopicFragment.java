@@ -19,6 +19,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseFragment;
+import byc.by.com.threeplayer.topic.adapter.MyAdapter;
 
 /**
  * Created by Zhang on 2017/12/5.

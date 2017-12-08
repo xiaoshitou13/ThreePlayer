@@ -8,7 +8,7 @@ import byc.by.com.threeplayer.find.FindBean;
 import byc.by.com.threeplayer.find.bean.PingLun;
 import byc.by.com.threeplayer.find.bean.Video;
 
-import byc.by.com.threeplayer.topic.Topic_Bean;
+import byc.by.com.threeplayer.topic.bean.Topic_Bean;
 import retrofit2.http.GET;
 import retrofit2.http.Url;
 import rx.Observable;

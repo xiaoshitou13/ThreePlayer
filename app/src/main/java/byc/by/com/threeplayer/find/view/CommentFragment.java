@@ -34,7 +34,7 @@ public class CommentFragment extends Fragment {
     @BindView(R.id.srl)
     SwipeRefreshLayout srl;
     private View view;
-
+    private MyAdapter myAdapter;
     //
     @Nullable
     @Override
@@ -48,6 +48,9 @@ public class CommentFragment extends Fragment {
                 srl.setRefreshing(false);
             }
         });
+        if (myAdapter!=null){
+            myAdapter.notifyDataSetChanged();
+        }
         return view;
     }
 
@@ -69,7 +72,10 @@ public class CommentFragment extends Fragment {
 
                     @Override
                     public void onNext(PingLun pingLun) {
-                        lv.setAdapter(new MyAdapter(getContext(), pingLun.getRet().getList()));
+                        if (pingLun.getRet().getList()!=null){
+                        myAdapter=new MyAdapter(getContext(), pingLun.getRet().getList());
+
+                        lv.setAdapter(myAdapter);}
                     }
                 });
 

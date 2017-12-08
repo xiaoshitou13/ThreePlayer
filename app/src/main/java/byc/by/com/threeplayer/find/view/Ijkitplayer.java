@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -50,6 +51,7 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
         ButterKnife.bind(this);
         addtab();
 
+
         //初始化播放器
         player = new PlayerManager(this);
         //player.setFullScreenOnly(true);
@@ -69,7 +71,11 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
                 Gson gson = new Gson();
                 Video video = gson.fromJson(result, Video.class);
                 smoothURLs = video.getRet().getSmoothURL();
-                player.play(smoothURLs);
+                if(smoothURLs!=null){
+                    player.play(smoothURLs);
+                }else{
+                    Toast.makeText(Ijkitplayer.this, "暂时无资源", Toast.LENGTH_SHORT).show();
+                }
 
             }
         });
@@ -114,7 +120,8 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
     @Override
     protected void onPause() {
         super.onPause();
-        player.stop();
+        finish();
+//        player.stop();
     }
 
     @Override
@@ -140,8 +147,9 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getpath(IjkitBean video) {
         paths = video.getPath();
-        Log.i("p",""+paths);
-        start(paths);
+            start(paths);
+
+
 
     }
     //ViewPager适配器，放入Fragment
