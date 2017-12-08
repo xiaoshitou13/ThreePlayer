@@ -40,6 +40,10 @@ import byc.by.com.threeplayer.find.bean.IjkitBean;
 import byc.by.com.threeplayer.find.view.Ijkitplayer;
 import byc.by.com.threeplayer.my.sqlites.dao;
 import utils.Api;
+
+import utils.ObservableScrollView;
+import utils.XXRecyclerview;
+
 import utils.XXbanner;
 
 /**
@@ -51,7 +55,7 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
 
     Unbinder unbinder;
     @BindView(R.id.rcv)
-    XRecyclerView rcv;
+    XXRecyclerview rcv;
     @BindView(R.id.tv_choice)
     TextView tvChoice;
     @BindView(R.id.toptoolbar)
@@ -61,6 +65,7 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
     private int banheight;
     private XXbanner xban;
     private List<ChoiceBean.RetBean.ListBean.ChildListBean> childList0;
+    private TextView tvtvb;
 
     @Nullable
     @Override
@@ -70,6 +75,7 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
         unbinder = ButterKnife.bind(this, v);
         View abnv = View.inflate(getActivity(), R.layout.xbann, null);
         xban = (XXbanner) abnv.findViewById(R.id.xban);
+        tvtvb = (TextView) abnv.findViewById(R.id.wp_ttv);
         rcv.addHeaderView(abnv);
         xban.setPageTransformer(Transformer.Rotate);
         choicePresenter = new ChoicePresenter(this);
@@ -123,6 +129,7 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
         rcv.setAdapter(choiceAdapter);
         rcv.setLayoutManager(new LinearLayoutManager(getActivity()));
         childList0 = list.get(0).getChildList();
+        tvtvb.setText(list.get(4).getTitle());
         final List<String> xbanimg = new ArrayList<>();
         for (int i = 0; i < childList0.size(); i++) {
             xbanimg.add(childList0.get(i).getPic());

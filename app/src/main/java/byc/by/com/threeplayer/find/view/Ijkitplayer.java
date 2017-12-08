@@ -29,6 +29,7 @@ import byc.by.com.threeplayer.find.bean.IjkitBean;
 import byc.by.com.threeplayer.find.bean.Video;
 import byc.by.com.threeplayer.find.common.PlayerManager;
 import okhttp3.Request;
+import utils.SlidingLayout;
 
 
 public class Ijkitplayer extends FragmentActivity implements PlayerManager.PlayerStateListener {
@@ -59,12 +60,17 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
         //player.playInFullScreen(true);
         player.setPlayerStateListener(this);
 
+        if (enableSliding()) {
+            SlidingLayout rootView = new SlidingLayout(this);
+            rootView.bindActivity(this);
+        }
     }
 
     private void start(String path) {
         MyOkhttp.getAsync(paths, new MyOkhttp.DataCallBack() {
             @Override
             public void requestFailure(Request request, IOException e) {
+                //Toast.makeText(Ijkitplayer.this, "", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void requestSuccess(String result) throws Exception {
@@ -183,6 +189,10 @@ public class Ijkitplayer extends FragmentActivity implements PlayerManager.Playe
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+    }
+
+    protected boolean enableSliding() {
+        return true;
     }
 }
 
