@@ -6,9 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -52,27 +54,37 @@ public class IntroduceFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        EventBus.getDefault().register(this);
-        MyOkhttp.getAsync(path, new MyOkhttp.DataCallBack() {
-            @Override
-            public void requestFailure(Request request, IOException e) {
+//        Log.d("TAGS",path+"--------");
+//        if (path==null){
+//            Toast.makeText(getContext(), "视屏已下载", Toast.LENGTH_SHORT).show();
+//        }else {
+            EventBus.getDefault().register(this);
+            MyOkhttp.getAsync(path, new MyOkhttp.DataCallBack() {
+                @Override
+                public void requestFailure(Request request, IOException e) {
 
-            }
+                }
 
-            @Override
-            public void requestSuccess(String result) throws Exception {
-                Gson gson = new Gson();
-                video = gson.fromJson(result, Video.class);
-                LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getActivity());
-                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-                recycleview.setLayoutManager(linearLayoutManager);
-                HomeAdapter gridAdapter = new HomeAdapter(video.getRet(), getActivity());
-                recycleview.setAdapter(gridAdapter);
+                @Override
+                public void requestSuccess(String result) throws Exception {
+                    Gson gson = new Gson();
+                    video = gson.fromJson(result, Video.class);
+                    if (video.getCode().equals("600")){
+                        Toast.makeText(getContext(), "视屏已下载", Toast.LENGTH_SHORT).show();
+                    }else {
+                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                        recycleview.setLayoutManager(linearLayoutManager);
+                        HomeAdapter gridAdapter = new HomeAdapter(video.getRet(), getActivity());
+                        recycleview.setAdapter(gridAdapter);
+                    }
 
-            }
-        });
+                }
+            });
+        }
 
-    }
+
+//    }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getdata(IjkitBean ijkitBean) {

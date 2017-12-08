@@ -67,6 +67,7 @@ public class TopicFragment extends BaseFragment {
         myAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+
                 Intent intent = new Intent(getActivity(),LieBiaoActivity.class);
                 intent.putExtra("key",position+"");
                 startActivity(intent);
