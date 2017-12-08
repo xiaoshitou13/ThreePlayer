@@ -41,8 +41,8 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int positions) {
-        ((Myhodler)holder).textView.setText("主演"+list.getActors());
-        ((Myhodler)holder).textView1.setText("剧情简介"+list.getDescription());
+        ((Myhodler)holder).textView.setText("主演："+list.getActors());
+        ((Myhodler)holder).textView1.setText("剧情简介："+list.getDescription());
         ((Myhodler)holder).xianshi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

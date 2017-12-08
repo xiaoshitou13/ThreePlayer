@@ -2,10 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <utils.XXbanner
-
         android:id="@+id/xban"
         android:layout_width="match_parent"
         android:layout_height="250.0dip"
@@ -17,5 +17,26 @@
         app:tipTextSize="16.0sp">
 
     </utils.XXbanner>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="5dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:src="@android:color/holo_green_light" />
+
+        <TextView
+            android:id="@+id/wp_ttv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </LinearLayout>
