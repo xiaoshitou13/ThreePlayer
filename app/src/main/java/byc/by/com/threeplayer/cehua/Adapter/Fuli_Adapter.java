@@ -52,7 +52,7 @@ public class Fuli_Adapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
         //  Tupian.jiazi(((Viewholder) holder).sim, context, data.get(position).url);
 
-        Glide.with(context).load(data.get(position).url).priority(Priority.IMMEDIATE).into(((Viewholder) holder).sim);
+        Glide.with(context).load(data.get(position).image_url).priority(Priority.IMMEDIATE).into(((Viewholder) holder).sim);
 
     }
 
