@@ -28,12 +28,8 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".find.view.Ijkitplayer" />
 
-        <activity android:name=".MainActivity">
 
-        </activity>
-        <activity android:name=".find.view.Ijkitplayer"
-            android:launchMode="singleTop"
-            />
+
 
         <activity android:name=".cehua.Fuli_Activity" />
         <activity android:name=".topic.LieBiaoActivity" />
@@ -45,17 +41,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".topic.LieBiaoActivity" />
+
         <activity android:name=".my.MySettings" />
         <activity android:name=".my.MywebViewClass" />
-        <activity android:name=".find.view.Ijkitplayer" />
-        <activity android:name=".cehua.Fuli_Activity" />
-        <activity android:name=".topic.LieBiaoActivity" />
+
         <activity android:name=".my.MyJilu"></activity>
 
 
-        <activity android:name=".my.MySettings" />
-        <activity android:name=".my.MywebViewClass"></activity>
+
         //qq
         <activity
             android:name="com.tencent.tauth.AuthActivity"
@@ -74,8 +67,6 @@
 
 
 
-        <activity android:name=".my.MySettings" />
-        <activity android:name=".my.MywebViewClass"></activity>
 
         <activity
             android:name=".base.BaseActivity"
