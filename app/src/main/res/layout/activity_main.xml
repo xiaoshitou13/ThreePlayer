@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg_blue"
     xmlns:hjm="http://schemas.android.com/apk/res-auto"
     tools:context="byc.by.com.threeplayer.MainActivity">
 
@@ -31,6 +32,7 @@
                     android:id="@+id/bottom_tab_bar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@mipmap/bg_colorful"
                     hjm:tab_font_size="8sp"
                     hjm:tab_img_font_padding="0dp"
                     hjm:tab_img_height="30dp"
