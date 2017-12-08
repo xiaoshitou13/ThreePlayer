@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import byc.by.com.threeplayer.find.view.Ijkitplayer;
 public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private Video.RetBean list;
     private Context context;
+    private boolean b=false;
 
     public HomeAdapter(Video.RetBean list, Context context) {
         this.list = list;
@@ -38,9 +40,22 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int positions) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int positions) {
         ((Myhodler)holder).textView.setText("主演"+list.getActors());
         ((Myhodler)holder).textView1.setText("剧情简介"+list.getDescription());
+        ((Myhodler)holder).xianshi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (b){
+                    ((Myhodler)holder).textView1.setSingleLine(true);
+                    ((Myhodler)holder).textView1.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
+                    b=false;
+                }else {
+                    ((Myhodler)holder).textView1.setSingleLine(false);
+                    b=true;
+                }
+            }
+        });
         StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL);
         ((Myhodler)holder).recyclerView.setLayoutManager(staggeredGridLayoutManager);
         HomeAdapter2 homeAdapter2=new HomeAdapter2(list.getList().get(positions).getChildList(),context);

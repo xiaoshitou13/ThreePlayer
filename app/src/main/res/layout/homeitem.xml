@@ -22,8 +22,10 @@
         android:layout_alignStart="@+id/yanyuan"
         android:layout_below="@+id/yanyuan"
         android:layout_marginTop="20dp"
-        android:text="剧情介绍"
-        android:textSize="20sp" />
+        android:text="剧情介绍:"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="25sp" />
 
     <TextView
         android:layout_width="wrap_content"
