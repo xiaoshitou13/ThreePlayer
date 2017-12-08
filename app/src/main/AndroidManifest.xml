@@ -40,7 +40,7 @@
         <activity android:name=".my.MywebViewClass"></activity>
 
 
-        <activity android:name=".find.view.Ijkitplayer"/>
+        <activity android:name=".find.view.Ijkitplayer" />
 
 
         <activity android:name=".cehua.Fuli_Activity"></activity>
