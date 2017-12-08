@@ -1,5 +1,6 @@
 package byc.by.com.threeplayer.choice.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +23,8 @@ import com.jcodecraeer.xrecyclerview.XRecyclerView;
 import com.stx.xhb.xbanner.XBanner;
 import com.stx.xhb.xbanner.transformers.Transformer;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,8 @@ import byc.by.com.threeplayer.choice.ChoiceConstract;
 import byc.by.com.threeplayer.choice.adapter.ChoiceAdapter;
 import byc.by.com.threeplayer.choice.bean.ChoiceBean;
 import byc.by.com.threeplayer.choice.presenter.ChoicePresenter;
+import byc.by.com.threeplayer.find.bean.IjkitBean;
+import byc.by.com.threeplayer.find.view.Ijkitplayer;
 import utils.Api;
 import utils.ObservableScrollView;
 import utils.XXbanner;
@@ -56,6 +61,7 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
     private ChoicePresenter choicePresenter;
     private int banheight;
     private XXbanner xban;
+    private List<ChoiceBean.RetBean.ListBean.ChildListBean> childList0;
 
     @Nullable
     @Override
@@ -87,28 +93,6 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
                 banheight = xban.getHeight();
             }
         });
-
-    }
-
-    @Override
-    public void ShowData(ChoiceBean choiceBean) {
-        List<ChoiceBean.RetBean.ListBean> list = choiceBean.getRet().getList();
-        ChoiceAdapter choiceAdapter = new ChoiceAdapter(list, getActivity());
-        rcv.setAdapter(choiceAdapter);
-        rcv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        List<ChoiceBean.RetBean.ListBean.ChildListBean> childList0 = list.get(0).getChildList();
-        final List<String> xbanimg = new ArrayList<>();
-        for (int i = 0; i < childList0.size(); i++) {
-            xbanimg.add(childList0.get(i).getPic());
-        }
-
-        xban.setData(xbanimg, null);
-        xban.setmAdapter(new XBanner.XBannerAdapter() {
-            @Override
-            public void loadBanner(XBanner banner, Object model, View view, int position) {
-                Glide.with(getActivity()).load(xbanimg.get(position)).into((ImageView) view);
-            }
-        });
         rcv.addOnScrollListener(new RecyclerView.OnScrollListener() {
             private int totalDy = 0;
 
@@ -129,6 +113,35 @@ public class ChoiceFragment extends BaseFragment implements ChoiceConstract.ICho
                     tvChoice.setVisibility(View.VISIBLE);
                     toptoolbar.setBackgroundColor(Color.argb((int) 255, 227, 29, 26));
                 }
+            }
+        });
+    }
+
+    @Override
+    public void ShowData(ChoiceBean choiceBean) {
+        List<ChoiceBean.RetBean.ListBean> list = choiceBean.getRet().getList();
+        ChoiceAdapter choiceAdapter = new ChoiceAdapter(list, getActivity());
+        rcv.setAdapter(choiceAdapter);
+        rcv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        childList0 = list.get(0).getChildList();
+        final List<String> xbanimg = new ArrayList<>();
+        for (int i = 0; i < childList0.size(); i++) {
+            xbanimg.add(childList0.get(i).getPic());
+        }
+
+        xban.setData(xbanimg, null);
+        xban.setmAdapter(new XBanner.XBannerAdapter() {
+            @Override
+            public void loadBanner(XBanner banner, Object model, View view, int position) {
+                Glide.with(getActivity()).load(xbanimg.get(position)).into((ImageView) view);
+            }
+        });
+        xban.setOnItemClickListener(new XBanner.OnItemClickListener() {
+            @Override
+            public void onItemClick(XBanner banner, int position) {
+                EventBus.getDefault().postSticky(new IjkitBean(childList0.get(position).getLoadURL()));
+                Intent in = new Intent(getActivity(), Ijkitplayer.class);
+                startActivity(in);
             }
         });
     }
