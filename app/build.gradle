@@ -86,4 +86,6 @@ dependencies {
     implementation files('libs/SocialSDK_Sina_Simplify.jar')
     implementation files('libs/SocialSDK_WeiXin_Full.jar')
     implementation files('libs/SocialSDK_WeChat_Simplify.jar')
+    implementation files('libs/open_sdk_r5793.jar')
+    implementation files('libs/mta-sdk-1.6.2.jar')
 }

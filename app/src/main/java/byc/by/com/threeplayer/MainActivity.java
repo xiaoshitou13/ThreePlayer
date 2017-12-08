@@ -15,26 +15,22 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hjm.bottomtabbar.BottomTabBar;
 import com.makeramen.roundedimageview.RoundedImageView;
-
-import com.umeng.socialize.ShareAction;
-import com.umeng.socialize.ShareContent;
-import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.UMShareListener;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.media.UMImage;
-import com.umeng.socialize.shareboard.SnsPlatform;
-import com.umeng.socialize.utils.ShareBoardlistener;
-
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.ShareContent;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.shareboard.SnsPlatform;
+import com.umeng.socialize.utils.ShareBoardlistener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
