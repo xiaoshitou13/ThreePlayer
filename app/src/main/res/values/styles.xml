@@ -1,28 +1,30 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <!-- 设置activity切换动画 -->
-        <item name="android:windowAnimationStyle">@style/activityAnimation</item>
-    </style>
 
-    <style name="Myone" >
-        <item name="android:textColor">#ffff</item>
-        <item name="android:color">#062EB1</item>
-        <item name="android:background">@mipmap/bg_blue</item>
+        <item name="appbg">@color/red</item>
+        <item name="Relatebg">@mipmap/my_bg_colorful</item>
     </style>
 
 
-    <!-- animation 样式 -->
-    <style name="activityAnimation" parent="@android:style/Animation">
-        <item name="android:activityOpenEnterAnimation">@anim/slide_right_in</item>
-        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
-        <item name="android:activityCloseEnterAnimation">@anim/slide_left_in</item>
-        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    <!-- Base application theme. -->
+    <style name="AppTheme2" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/green</item>
+
+        <item name="appbg">@color/green</item>
+        <item name="Relatebg">@mipmap/bg_blue</item>
     </style>
+
+
+
+
 
 </resources>

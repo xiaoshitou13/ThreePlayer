@@ -8,15 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
-import com.stx.xhb.xbanner.XBanner;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,7 +22,7 @@ import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.choice.bean.ChoiceBean;
 import byc.by.com.threeplayer.find.bean.IjkitBean;
 import byc.by.com.threeplayer.find.view.Ijkitplayer;
-import tv.danmaku.ijk.media.player.IjkMediaPlayer;
+import byc.by.com.threeplayer.my.sqlites.dao;
 
 /**
  * Created by Zhang on 2017/12/6.
@@ -64,6 +61,8 @@ public class ChoiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dao dao = new dao(context);
+                dao.add(childList.get(position).getTitle(),childList.get(position).getPic(),childList.get(position).getLoadURL());
                // Toast.makeText(context, ""+childList.get(position).getTitle(), Toast.LENGTH_SHORT).show();
                 EventBus.getDefault().postSticky(new IjkitBean(childList.get(position).getLoadURL()));
                 Intent in = new Intent(context, Ijkitplayer.class);

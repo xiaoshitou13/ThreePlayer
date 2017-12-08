@@ -111,9 +111,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
         mTencent = Tencent.createInstance(APP_ID, MainActivity.this.getApplicationContext());
+
 
         bottomTabBar.init(getSupportFragmentManager())
 
@@ -121,6 +125,7 @@ public class MainActivity extends BaseActivity {
                 .addTabItem("专题", R.mipmap.special, TopicFragment.class)
                 .addTabItem("发现", R.mipmap.search, FindFragment.class)
                 .addTabItem("我的", R.mipmap.my, MyFragment.class);
+
 
 
     }
@@ -224,6 +229,7 @@ public class MainActivity extends BaseActivity {
     }
 
 
+
     @OnClick(R.id.avatar)
     public void onClick() {
         mIUiListener = new BaseUiListener();
@@ -301,5 +307,6 @@ public class MainActivity extends BaseActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
     }
+
 }
 

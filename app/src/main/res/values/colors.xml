@@ -5,6 +5,8 @@
     <color name="colorAccent">#FF4081</color>#559C00
     <color name="green">#559C00</color>
 
+    <color name="red">#f00</color>
     <color name="black">#000</color>
     <color name="zongse">#B2673D</color>
+
 </resources>
