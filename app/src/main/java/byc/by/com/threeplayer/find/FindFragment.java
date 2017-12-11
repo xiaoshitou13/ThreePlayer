@@ -116,8 +116,6 @@ public class FindFragment extends BaseFragment implements Iview {
                 String loadURL = ret.getList().get(postion).getLoadURL();
                 EventBus.getDefault().postSticky(new IjkitBean(loadURL));
                 startActivity(new Intent(getActivity(), Ijkitplayer.class));
-
-
             }
         });
             }

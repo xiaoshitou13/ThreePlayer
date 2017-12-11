@@ -6,4 +6,8 @@
 
     <attr name="appbg" format="reference"></attr>
     <attr name="Relatebg" format="reference"></attr>
+
+    <declare-styleable name="ThemeChoiceRadioButton">
+        <attr name="backgroundColor" format="color"/>
+    </declare-styleable>
 </resources>

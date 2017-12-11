@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 
 android {
+
     compileSdkVersion 26
     defaultConfig {
         applicationId "byc.by.com.threeplayer"
@@ -61,7 +62,10 @@ dependencies {
 
     compile(name: 'ijkplayer-java-release', ext: 'aar')
     //tablayout
-    compile 'com.android.support:design:26.1.0'
+
+    compile 'com.android.support:design:25.1.0'
+
+
 
     compile 'com.makeramen:roundedimageview:2.2.1'
     //cardview
@@ -104,8 +108,10 @@ dependencies {
     implementation files('libs/SocialSDK_WeiXin_Full.jar')
     implementation files('libs/SocialSDK_WeChat_Simplify.jar')
 
+
     implementation files('libs/open_sdk_r5793.jar')
     implementation files('libs/mta-sdk-1.6.2.jar')
+
 
 
 }

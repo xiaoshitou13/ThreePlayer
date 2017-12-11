@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+       >
+
+        <byc.by.com.threeplayer.my.View.ThemeChoicePreferences
+            android:key="theme_change"/>
+     
+    </PreferenceCategory>
+</PreferenceScreen>

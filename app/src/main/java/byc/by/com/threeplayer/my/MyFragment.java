@@ -1,15 +1,11 @@
 package byc.by.com.threeplayer.my;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,6 +60,8 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
         mL4.setOnClickListener(this);
         mL1 = (RelativeLayout) v.findViewById(R.id.l1);
         mL1.setOnClickListener(this);
+        Toolbar toolbar=(Toolbar)v.findViewById(R.id.toolbar);
+        toolbar.setTitle("我的");
 
 
         dao = new dao(getContext());
@@ -114,36 +112,14 @@ public class MyFragment extends BaseFragment implements View.OnClickListener {
                 Toast.makeText(getContext(), "敬请期待", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.l4:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-
-                builder.setTitle("主题");
-
-                builder.setNegativeButton("完成", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Fnagfa();
-                    }
-                });
-                builder.setPositiveButton("关闭", null);
-                builder.show();
+                startActivity(new Intent(getContext(),MyColorActivity.class));
                 break;
         }
     }
 
-    private void Fnagfa() {
-        SharedPreferences sp = getActivity().getSharedPreferences("ss", Context.MODE_PRIVATE);
-        Boolean aBoolean = sp.getBoolean("night", false);
 
-        if (aBoolean) {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-            sp.edit().putBoolean("night", false).commit();
-        } else {
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-            sp.edit().putBoolean("night", true).commit();
-        }
 
-        getActivity().recreate();
-    }
+
 
 
 }
