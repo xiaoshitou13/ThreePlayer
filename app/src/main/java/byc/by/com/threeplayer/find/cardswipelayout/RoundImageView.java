@@ -46,14 +46,19 @@ public class RoundImageView extends ImageView {
         rids[6] = 0f;
         rids[7] = 0f;
         array.recycle();
+        //初始化贝塞尔曲线
         mPath = new Path();
+        //设置画笔抗锯齿
         paintFlagsDrawFilter = new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
+        //view性能优化
         setLayerType(View.LAYER_TYPE_HARDWARE, null);
     }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
         mPath.reset();
+        //圆角矩形
         mPath.addRoundRect(mRectF, rids, Path.Direction.CW);
         canvas.setDrawFilter(paintFlagsDrawFilter);
         canvas.save();
@@ -69,3 +74,4 @@ public class RoundImageView extends ImageView {
     }
 
 }
+

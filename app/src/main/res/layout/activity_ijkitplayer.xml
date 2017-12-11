@@ -7,28 +7,10 @@
     tools:context="byc.by.com.threeplayer.find.view.Ijkitplayer"
     android:background="@drawable/bg_colorful"
     android:orientation="vertical">
-  <RelativeLayout
+  <include
+      layout="@layout/simple_player_view_player"
       android:layout_width="match_parent"
-      android:layout_height="80dp"
-      android:background="#ff00"
-
-      >
-   <TextView
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="播放"
-       android:textSize="15dp"
-       android:textColor="#fff"
-       android:layout_centerInParent="true"
-       />
-
-  </RelativeLayout>
-  <byc.by.com.threeplayer.find.widget.media.IjkVideoView
-      android:layout_width="match_parent"
-      android:layout_height="250dp"
-      android:id="@+id/video_view"
-      >
-  </byc.by.com.threeplayer.find.widget.media.IjkVideoView>
+      android:layout_height="200dp"/>
     <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
