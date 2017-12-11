@@ -6,30 +6,34 @@
     android:layout_height="match_parent"
     tools:context="byc.by.com.threeplayer.my.MySettings">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:id="@+id/jilutou"
-        android:background="@color/zongse">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="55dp"-->
+        <!--android:id="@+id/jilutou"-->
+        <!--android:background="@color/zongse">-->
 
-        <ImageButton
-            android:id="@+id/seticon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@mipmap/back"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="10dp"/>
+        <!--<ImageButton-->
+            <!--android:id="@+id/seticon"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@mipmap/back"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_marginLeft="10dp"/>-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/shezhi"
-            android:layout_centerInParent="true"
-            android:textColor="#ffff"
-            android:textSize="24sp"/>
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/shezhi"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:textColor="#ffff"-->
+            <!--android:textSize="24sp"/>-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
+
+
+    <include layout="@layout/include_toolbar" android:id="@+id/jilutou"/>
+
 
 
     <RelativeLayout

@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import org.greenrobot.eventbus.EventBus;
@@ -18,14 +19,11 @@ import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseActivity;
 import byc.by.com.threeplayer.find.bean.IjkitBean;
 import byc.by.com.threeplayer.find.view.Ijkitplayer;
-
 import byc.by.com.threeplayer.my.sqlites.dao;
-
 import byc.by.com.threeplayer.topic.adapter.MyAdapter_LieBiao;
 import byc.by.com.threeplayer.topic.bean.Topic_Bean;
 import byc.by.com.threeplayer.topic.presenter.Presenter;
 import byc.by.com.threeplayer.topic.view.Iview;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

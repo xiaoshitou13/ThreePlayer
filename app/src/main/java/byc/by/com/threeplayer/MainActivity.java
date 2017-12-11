@@ -3,8 +3,11 @@ package byc.by.com.threeplayer;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,26 +18,22 @@ import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.hjm.bottomtabbar.BottomTabBar;
 import com.makeramen.roundedimageview.RoundedImageView;
-
-import com.umeng.socialize.ShareAction;
-import com.umeng.socialize.ShareContent;
-import com.umeng.socialize.UMShareAPI;
-import com.umeng.socialize.UMShareListener;
-import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.media.UMImage;
-import com.umeng.socialize.shareboard.SnsPlatform;
-import com.umeng.socialize.utils.ShareBoardlistener;
-
 import com.tencent.connect.UserInfo;
 import com.tencent.connect.auth.QQToken;
 import com.tencent.connect.common.Constants;
 import com.tencent.tauth.IUiListener;
 import com.tencent.tauth.Tencent;
 import com.tencent.tauth.UiError;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.ShareContent;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.shareboard.SnsPlatform;
+import com.umeng.socialize.utils.ShareBoardlistener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,8 +43,11 @@ import byc.by.com.threeplayer.cehua.Adapter.QQLoginBean;
 import byc.by.com.threeplayer.cehua.Fuli_Activity;
 import byc.by.com.threeplayer.choice.view.ChoiceFragment;
 import byc.by.com.threeplayer.find.FindFragment;
+import byc.by.com.threeplayer.my.MyColorActivity;
 import byc.by.com.threeplayer.my.MyFragment;
 import byc.by.com.threeplayer.my.MySettings;
+import byc.by.com.threeplayer.my.Util.ThemeUtils;
+import byc.by.com.threeplayer.my.Util.Utils;
 import byc.by.com.threeplayer.topic.TopicFragment;
 
 public class MainActivity extends BaseActivity {
@@ -120,6 +122,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
         mTencent = Tencent.createInstance(APP_ID, MainActivity.this.getApplicationContext());
 
 
@@ -130,9 +133,15 @@ public class MainActivity extends BaseActivity {
                 .addTabItem("发现", R.mipmap.search, FindFragment.class)
                 .addTabItem("我的", R.mipmap.my, MyFragment.class);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        Utils.context=MainActivity.this;
+        ThemeUtils.initStatusBarColor(MainActivity.this,ThemeUtils.getPrimaryDarkColor(MainActivity.this));
 
 
     }
+
+
 
 
     @OnClick({R.id.menutext, R.id.menutext1, R.id.menutext2, R.id.menutext3, R.id.menutext4, R.id.menutext5, R.id.menutext6, R.id.guanyu, R.id.zhuti})
@@ -164,9 +173,13 @@ public class MainActivity extends BaseActivity {
             case R.id.guanyu:
                 break;
             case R.id.zhuti:
+                startActivity(new Intent(this,MyColorActivity.class));
+
                 break;
         }
     }
+
+
 
     private ShareBoardlistener shareBoardlistener = new ShareBoardlistener() {
 
@@ -312,5 +325,28 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+//            Intent intent=new Intent(MainActivity.this,Main2Activity.class);
+//            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
 

@@ -9,7 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.CharacterStyle;
@@ -31,6 +31,9 @@ import java.io.File;
 import java.io.FileReader;
 
 import byc.by.com.threeplayer.R;
+import byc.by.com.threeplayer.base.BaseActivity;
+import byc.by.com.threeplayer.my.Util.ThemeUtils;
+import byc.by.com.threeplayer.my.Util.Utils;
 import byc.by.com.threeplayer.my.yuying.AudioRecoderDialog;
 import byc.by.com.threeplayer.my.yuying.AudioRecoderUtils;
 import utils.DataCleanManager;
@@ -38,7 +41,7 @@ import utils.DataCleanManager;
 import static utils.DataCleanManager.getFolderSize;
 import static utils.DataCleanManager.getFormatSize;
 
-public class MySettings extends AppCompatActivity implements View.OnClickListener , View.OnTouchListener, AudioRecoderUtils.OnAudioStatusUpdateListener{
+public class MySettings extends BaseActivity implements View.OnClickListener , View.OnTouchListener, AudioRecoderUtils.OnAudioStatusUpdateListener{
     private AudioRecoderDialog recoderDialog;
     private AudioRecoderUtils recoderUtils;
     private long downT;
@@ -66,8 +69,8 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
     }
 
     private void initView() {
-        mJilutou = (RelativeLayout) findViewById(R.id.jilutou);
-        mJilutou.setOnClickListener(this);
+//        mJilutou = (RelativeLayout) findViewById(R.id.jilutou);
+//        mJilutou.setOnClickListener(this);
         mJiluone = (RelativeLayout) findViewById(R.id.jiluone);
         mJiluone.setOnClickListener(this);
         mJlhaoyou = (RelativeLayout) findViewById(R.id.jlhaoyou);
@@ -81,8 +84,15 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
         mJiluti = (RelativeLayout) findViewById(R.id.jiluti);
         mJiluti.setOnClickListener(this);
         mSettvhc = (TextView) findViewById(R.id.settvhc);
-        mSeticon = (ImageButton) findViewById(R.id.seticon);
-        mSeticon.setOnClickListener(this);
+//        mSeticon = (ImageButton) findViewById(R.id.seticon);
+//        mSeticon.setOnClickListener(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("设置");
+        setSupportActionBar(toolbar);
+        Utils.context=MySettings.this;
+
+        ThemeUtils.initStatusBarColor(MySettings.this,ThemeUtils.getPrimaryDarkColor(MySettings.this));
 
         try {
             String size = getTotalCacheSize(getApplicationContext());
@@ -97,8 +107,8 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
         switch (v.getId()) {
             default:
                 break;
-            case R.id.jilutou:
-                break;
+//            case R.id.jilutou:
+//                break;
             case R.id.jiluone:
                 break;
             case R.id.jlhaoyou:
@@ -225,15 +235,15 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
                 break;
             case R.id.jiluti:
                 break;
-            case R.id.seticon:
-                finish();
-                break;
+//            case R.id.seticon:
+//                finish();
+//                break;
         }
     }
 
 
     @TargetApi(19)
-    private void setTranslucentStatus(boolean on) {
+    protected void setTranslucentStatus(boolean on) {
         Window win = getWindow();
         WindowManager.LayoutParams winParams = win.getAttributes();
         final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
@@ -329,5 +339,6 @@ public class MySettings extends AppCompatActivity implements View.OnClickListene
         }
         return dir.delete();
     }
+
 
 }

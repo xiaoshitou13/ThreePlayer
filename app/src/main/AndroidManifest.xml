@@ -9,12 +9,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-
 
     <application
         android:name=".app.MyApp"
@@ -24,17 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".find.view.Ijkitplayer" />
-
-        <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".find.view.Ijkitplayer"
-            android:launchMode="singleTop"
-            />
-
         <activity android:name=".cehua.Fuli_Activity" />
         <activity android:name=".topic.LieBiaoActivity" />
         <activity android:name=".welcome.WelcomeActivity">
@@ -44,42 +32,30 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".topic.LieBiaoActivity" />
         <activity android:name=".my.MySettings" />
         <activity android:name=".my.MywebViewClass" />
-        <activity android:name=".find.view.Ijkitplayer" />
-        <activity android:name=".cehua.Fuli_Activity" />
-        <activity android:name=".topic.LieBiaoActivity" />
-        <activity android:name=".my.MyJilu"></activity>
-
-
-        <activity android:name=".my.MySettings" />
-        <activity android:name=".my.MywebViewClass"></activity>
+        <activity android:name=".my.MyJilu" />
         //qq
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent1105602574" /> <!-- 开放平台获取的APPID -->
             </intent-filter>
         </activity>
-        <activity android:name="com.tencent.connect.common.AssistActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:screenOrientation="portrait"/>
-
-
-
-        <activity android:name=".my.MySettings" />
-        <activity android:name=".my.MywebViewClass"></activity>
-
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".base.BaseActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
 
         <!-- QQ  start -->
         <activity
@@ -105,14 +81,12 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!-- QQ  end -->
-        <!-- 友盟key  -->
+        <!-- 友盟key -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="5a2a2b14b27b0a0b100028e4"></meta-data>
+            android:value="5a2a2b14b27b0a0b100028e4" />
 
-
-
-
+        <activity android:name=".my.MyColorActivity"></activity>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package byc.by.com.threeplayer.my;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
@@ -12,6 +13,8 @@ import java.util.List;
 
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseActivity;
+import byc.by.com.threeplayer.my.Util.ThemeUtils;
+import byc.by.com.threeplayer.my.Util.Utils;
 import byc.by.com.threeplayer.my.adatersmy.MyRecyAdater;
 import byc.by.com.threeplayer.my.sqlites.dao;
 
@@ -40,14 +43,26 @@ public class MyJilu extends BaseActivity implements View.OnClickListener {
     }
 
     private void initView() {
-        mJilutou = (RelativeLayout) findViewById(R.id.jilutou);
+     //   mJilutou = (RelativeLayout) findViewById(R.id.jilutou);
         mJilurecy = (RecyclerView) findViewById(R.id.jilurecy);
-        mJiluimage = (ImageButton) findViewById(R.id.jiluimage);
-        mJiluimage.setOnClickListener(this);
-        mQk = (TextView) findViewById(R.id.qk);
+   //     mJiluimage = (ImageButton) findViewById(R.id.jiluimage);
+//        mJiluimage.setOnClickListener(this);
+  //      mQk = (TextView) findViewById(R.id.qk);
         mFff = (TextView) findViewById(R.id.fff);
-        mQk.setOnClickListener(this);
+   //     mQk.setOnClickListener(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("设置");
+        toolbar.setNavigationIcon(R.mipmap.back);
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        setSupportActionBar(toolbar);
+        Utils.context=MyJilu.this;
 
+        ThemeUtils.initStatusBarColor(MyJilu.this,ThemeUtils.getPrimaryDarkColor(MyJilu.this));
         mJilurecy.setLayoutManager(new GridLayoutManager(this, 4));
 
         d = new dao(this);
@@ -69,14 +84,14 @@ public class MyJilu extends BaseActivity implements View.OnClickListener {
         switch (v.getId()) {
             default:
                 break;
-            case R.id.jiluimage:
-                finish();
-                break;
-            case R.id.qk:
-                d.deleteStudent1();
-                list.clear();
-                myRecyAdater.notifyDataSetChanged();
-                break;
+//            case R.id.jiluimage:
+//                finish();
+//                break;
+//            case R.id.qk:
+//                d.deleteStudent1();
+//                list.clear();
+//                myRecyAdater.notifyDataSetChanged();
+//                break;
         }
     }
 }

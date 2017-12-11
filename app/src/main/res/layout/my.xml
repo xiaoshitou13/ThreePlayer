@@ -6,25 +6,27 @@
 
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:id="@+id/mytou"
-        android:background="?attr/appbg">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="55dp"-->
+        <!--android:id="@+id/mytou"-->
+        <!--android:background="?attr/appbg">-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wode"
-            android:layout_centerInParent="true"
+        <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/wode"-->
+            <!--android:layout_centerInParent="true"-->
 
 
 
-            android:textColor="#ffff"
+            <!--android:textColor="#ffff"-->
 
-            android:textSize="24sp"/>
+            <!--android:textSize="24sp"/>-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
+    <include layout="@layout/include_toolbar" android:id="@+id/mytou"/>
+
 
 
     <ImageView
@@ -230,6 +232,8 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="15dp"
                     android:id="@+id/i4"/>
+
+
             </RelativeLayout>
 
 
