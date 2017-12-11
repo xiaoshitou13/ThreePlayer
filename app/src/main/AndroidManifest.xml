@@ -32,7 +32,7 @@
         <activity android:name=".find.view.Ijkitplayer" />
 
 
-        </activity>
+        
         <activity android:name=".find.view.Ijkitplayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
