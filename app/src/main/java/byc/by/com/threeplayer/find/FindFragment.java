@@ -21,9 +21,7 @@ import butterknife.Unbinder;
 import byc.by.com.threeplayer.R;
 import byc.by.com.threeplayer.base.BaseFragment;
 import byc.by.com.threeplayer.find.adapter.MyAdapters;
-
 import byc.by.com.threeplayer.find.bean.IjkitBean;
-
 import byc.by.com.threeplayer.find.cardswipelayout.CardConfig;
 import byc.by.com.threeplayer.find.cardswipelayout.CardItemTouchHelperCallback;
 import byc.by.com.threeplayer.find.cardswipelayout.CardLayoutManager;
@@ -31,6 +29,7 @@ import byc.by.com.threeplayer.find.cardswipelayout.OnSwipeListener;
 import byc.by.com.threeplayer.find.presenter.Presenter;
 import byc.by.com.threeplayer.find.view.Ijkitplayer;
 import byc.by.com.threeplayer.find.view.Iview;
+import byc.by.com.threeplayer.my.sqlites.dao;
 
 
 /**
@@ -112,6 +111,8 @@ public class FindFragment extends BaseFragment implements Iview {
                 mAdapter.setItemOnclicklistener(new MyAdapters.ItemOnclicklistener() {
             @Override
             public void item(View view, int postion) {
+                dao dao = new dao(getContext());
+                dao.add(ret.getList().get(postion).getTitle(),ret.getList().get(postion).getPic(),ret.getList().get(postion).getLoadURL());
                 String loadURL = ret.getList().get(postion).getLoadURL();
                 EventBus.getDefault().postSticky(new IjkitBean(loadURL));
                 startActivity(new Intent(getActivity(), Ijkitplayer.class));

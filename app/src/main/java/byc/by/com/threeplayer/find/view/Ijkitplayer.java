@@ -15,9 +15,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MotionEvent;
+
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+
+import android.widget.Toast;
+
 
 import com.bumptech.glide.Glide;
 import com.dou361.ijkplayer.bean.VideoijkBean;
@@ -43,7 +47,11 @@ import byc.by.com.threeplayer.find.MyOkhttp;
 import byc.by.com.threeplayer.find.bean.IjkitBean;
 import byc.by.com.threeplayer.find.bean.Video;
 import okhttp3.Request;
+
 import utils.MediaUtils;
+
+import utils.SlidingLayout;
+
 
 
 public class Ijkitplayer extends FragmentActivity {
@@ -68,11 +76,30 @@ public class Ijkitplayer extends FragmentActivity {
         rootView = getLayoutInflater().from(this).inflate(R.layout.activity_ijkitplayer, null);
         setContentView(rootView);
         ButterKnife.bind(this);
+
         EventBus.getDefault().register(this);
 /**虚拟按键的隐藏方法*/
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 
+        addtab();
+
+
+        //初始化播放器
+        player = new PlayerManager(this);
+        //player.setFullScreenOnly(true);
+        player.setScaleType(PlayerManager.SCALETYPE_FILLPARENT);
+        //player.playInFullScreen(true);
+        player.setPlayerStateListener(this);
+
+        if (enableSliding()) {
+            SlidingLayout rootView = new SlidingLayout(this);
+            rootView.bindActivity(this);
+        }
+    }
+
+
             @Override
+
             public void onGlobalLayout() {
 
                 //比较Activity根布局与当前布局的大小
@@ -85,6 +112,10 @@ public class Ijkitplayer extends FragmentActivity {
                     rootView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 
                 }
+
+            public void requestFailure(Request request, IOException e) {
+                //Toast.makeText(Ijkitplayer.this, "", Toast.LENGTH_SHORT).show();
+
             }
         });
         /**常亮*/
@@ -94,10 +125,21 @@ public class Ijkitplayer extends FragmentActivity {
         list = new ArrayList<VideoijkBean>();
         player = new PlayerView(Ijkitplayer.this, rootView) {
             @Override
+
             public PlayerView toggleProcessDurationOrientation() {
                 hideSteam(getScreenOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                 return setProcessDurationOrientation(getScreenOrientation() == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT ? PlayStateParams.PROCESS_PORTRAIT : PlayStateParams.PROCESS_LANDSCAPE);
             }
+
+            public void requestSuccess(String result) throws Exception {
+                Gson gson = new Gson();
+                Video video = gson.fromJson(result, Video.class);
+                smoothURLs = video.getRet().getSmoothURL();
+                if(smoothURLs!=null){
+                    player.play(smoothURLs);
+                }else{
+                    Toast.makeText(Ijkitplayer.this, "暂时无资源", Toast.LENGTH_SHORT).show();
+
 
             @Override
             public PlayerView setPlaySource(List<VideoijkBean> list) {
@@ -170,11 +212,14 @@ public class Ijkitplayer extends FragmentActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
         if (player != null) {
             player.onPause();
         }
         /**demo的内容，恢复系统其它媒体的状态*/
         MediaUtils.muteAudioFocus(mContext, true);
+
+
         finish();
 //        player.stop();
     }
@@ -260,6 +305,11 @@ public class Ijkitplayer extends FragmentActivity {
         Log.i("p", "" + paths);
         start(paths);
 
+            start(paths);
+
+
+
+
     }
 
     //ViewPager适配器，放入Fragment
@@ -296,6 +346,10 @@ public class Ijkitplayer extends FragmentActivity {
         if (player != null) {
             player.onDestroy();
         }
+    }
+
+    protected boolean enableSliding() {
+        return true;
     }
 }
 

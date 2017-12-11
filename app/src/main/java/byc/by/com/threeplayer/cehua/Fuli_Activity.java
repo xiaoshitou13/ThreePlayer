@@ -26,9 +26,11 @@ public class Fuli_Activity extends BaseActivity implements Iview {
     SwipeRefreshLayout swi;
     private List<FuliBean.DataBean> data;
     int i = 1;
-    String path = "meituApi?page=" + i;
+    //String path = "meituApi?page=" + i;
     private Presenter presenter;
     private Fuli_Adapter adapter;
+
+    String  path ="channel/listjson?pn="+i+"2&rn=30&tag1=%E7%BE%8E%E5%A5%B3&tag2=%E8%AF%B1%E6%83%91&ie=utf8&qq-pf-to=pcqq.temporaryc2c";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +61,7 @@ public class Fuli_Activity extends BaseActivity implements Iview {
 
     @Override
     public void getBean(FuliBean bean) {
-        Log.e("sss", bean.msg);
+        Log.e("sss", bean.tag1);
         data = bean.data;
         recy.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         adapter = new Fuli_Adapter(data, Fuli_Activity.this);
