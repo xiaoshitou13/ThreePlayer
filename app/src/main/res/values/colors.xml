@@ -7,4 +7,6 @@
 
     <color name="black">#000</color>
     <color name="zongse">#B2673D</color>
+    <color name="cl_default">#424242</color>
+    <color name="cl_error">#ffffff</color>
 </resources>

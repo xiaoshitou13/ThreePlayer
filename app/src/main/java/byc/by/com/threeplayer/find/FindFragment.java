@@ -81,22 +81,13 @@ public class FindFragment extends BaseFragment implements Iview {
                     public void onSwiping(RecyclerView.ViewHolder viewHolder, float ratio, int direction) {
                         MyAdapters.MyHolder myHolder = (MyAdapters.MyHolder) viewHolder;
                         viewHolder.itemView.setAlpha(1 - Math.abs(ratio) * 0.2f);
-                        if (direction == CardConfig.SWIPING_LEFT) {
-                            myHolder.dislikeImageView.setAlpha(Math.abs(ratio));
-                        } else if (direction == CardConfig.SWIPING_RIGHT) {
-                            myHolder.likeImageView.setAlpha(Math.abs(ratio));
-                        } else {
-                            myHolder.dislikeImageView.setAlpha(0f);
-                            myHolder.likeImageView.setAlpha(0f);
-                        }
+
                     }
 
                     @Override
                     public void onSwiped(RecyclerView.ViewHolder viewHolder, FindBean.RetBean.ListBean listBean, int direction) {
                         MyAdapters.MyHolder myHolder = (MyAdapters.MyHolder) viewHolder;
                         viewHolder.itemView.setAlpha(1f);
-                        myHolder.dislikeImageView.setAlpha(0f);
-                        myHolder.likeImageView.setAlpha(0f);
                         //Toast.makeText(getActivity(), direction == CardConfig.SWIPED_LEFT ? "swiped left" : "swiped right", Toast.LENGTH_SHORT).show();
                     }
 
