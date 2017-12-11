@@ -58,16 +58,18 @@ public class HomeAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         });
         StaggeredGridLayoutManager staggeredGridLayoutManager=new StaggeredGridLayoutManager(3, LinearLayoutManager.VERTICAL);
         ((Myhodler)holder).recyclerView.setLayoutManager(staggeredGridLayoutManager);
-        HomeAdapter2 homeAdapter2=new HomeAdapter2(list.getList().get(positions).getChildList(),context);
-        ((Myhodler)holder).recyclerView.setAdapter(homeAdapter2);
-        homeAdapter2.setItemOnclicklistener(new MyAdapters.ItemOnclicklistener() {
-            @Override
-            public void item(View view, int postion) {
-                String loadURL = list.getList().get(0).getChildList().get(postion).getLoadURL();
-                EventBus.getDefault().postSticky(new IjkitBean(loadURL));
-                context.startActivity(new Intent(context, Ijkitplayer.class));
-            }
-        });
+        if (list.getList()==null){}else {
+            HomeAdapter2 homeAdapter2 = new HomeAdapter2(list.getList().get(positions).getChildList(), context);
+            ((Myhodler) holder).recyclerView.setAdapter(homeAdapter2);
+            homeAdapter2.setItemOnclicklistener(new MyAdapters.ItemOnclicklistener() {
+                @Override
+                public void item(View view, int postion) {
+                    String loadURL = list.getList().get(0).getChildList().get(postion).getLoadURL();
+                    EventBus.getDefault().postSticky(new IjkitBean(loadURL));
+                    context.startActivity(new Intent(context, Ijkitplayer.class));
+                }
+            });
+        }
     }
 
     @Override
