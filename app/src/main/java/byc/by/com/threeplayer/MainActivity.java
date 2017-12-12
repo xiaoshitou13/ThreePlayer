@@ -41,6 +41,7 @@ import butterknife.OnClick;
 import byc.by.com.threeplayer.base.BaseActivity;
 import byc.by.com.threeplayer.cehua.Adapter.QQLoginBean;
 import byc.by.com.threeplayer.cehua.Fuli_Activity;
+import byc.by.com.threeplayer.cehua.shoucang.Sc_Activity;
 import byc.by.com.threeplayer.choice.view.ChoiceFragment;
 import byc.by.com.threeplayer.find.FindFragment;
 import byc.by.com.threeplayer.my.MyColorActivity;
@@ -150,6 +151,7 @@ public class MainActivity extends BaseActivity {
             case R.id.menutext:
                 break;
             case R.id.menutext1:
+                startActivity(new Intent(MainActivity.this, Sc_Activity.class));
                 break;
             case R.id.menutext2:
                 Toast.makeText(MainActivity.this, "敬请期待", Toast.LENGTH_LONG).show();

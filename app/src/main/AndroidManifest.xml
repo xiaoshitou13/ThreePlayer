@@ -29,10 +29,7 @@
         android:theme="@style/AppTheme">
 
         <activity android:name=".MainActivity" />
-        <activity android:name=".find.view.Ijkitplayer" />
 
-
-        
         <activity android:name=".find.view.Ijkitplayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
@@ -53,10 +50,7 @@
         <activity android:name=".my.MyJilu" />
 
 
-        <activity android:name=".my.MySettings" />
-        <activity android:name=".my.MywebViewClass" />
 
-        <activity android:name=".my.MyJilu"></activity>
 
 
 
@@ -81,9 +75,6 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
-        <activity android:name="com.tencent.connect.common.AssistActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:screenOrientation="portrait"/>
 
 
         <activity
@@ -120,6 +111,8 @@
             android:value="5a2a2b14b27b0a0b100028e4" />
 
         <activity android:name=".my.MyColorActivity"></activity>
+
+        <activity android:name=".cehua.shoucang.Sc_Activity"/>
 
     </application>
 
