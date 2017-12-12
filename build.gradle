@@ -36,7 +36,7 @@ ext {
     minSdkVersion = 15
     versionCode = 1
     versionName = "1.0.0.01"
-    //library版本
+
     jjdxm_minSdkVersion = 9
     jjdxm_versionCode = 1
     jjdxm_versionName = "1.0.0"
